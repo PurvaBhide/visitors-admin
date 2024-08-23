@@ -43,6 +43,12 @@ const showSideBarAsPerRole = () => {
             <div data-i18n="Layouts">Rejected Requests</div>
           </a>
         </li>
+        <li class="menu-item">
+  <a href="./previous-request.php" class="menu-link">
+    <i class="menu-icon tf-icons fas fa-history" style="color: #6c757d;"></i>
+    <div data-i18n="Layouts">Previous Requests</div>
+  </a>
+</li>
       </ul>
     </aside>
   `;
