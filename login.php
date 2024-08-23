@@ -33,7 +33,7 @@
             </div>
             <!-- /Logo -->
 
-            <form id="loginForm" class="mb-3" action="index.html" method="POST">
+            <form id="loginForm" class="mb-3" method="POST">
               <div class="mb-3">
                 <label for="email" class="form-label">Email or Username</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus />
@@ -69,7 +69,7 @@
   <?php
   include_once('./include-common-scripts.php')
   ?>
-  <!-- <script src="./assets/js/filter/login.js"></script> -->
+  <script src="./assets/js/filter/login.js"></script>
 
 </body>
 

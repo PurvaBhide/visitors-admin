@@ -5,7 +5,7 @@ const userLogin = (user) => {
   localStorage.setItem("user", JSON.stringify(user));
   //   localStorage.setItem("token", user.token);
 
-  window.location.href = "index.php";
+  window.location.href = "visitors.php";
 };
 
 const checkLogin = () => {
