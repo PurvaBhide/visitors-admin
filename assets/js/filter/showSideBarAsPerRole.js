@@ -17,7 +17,7 @@ const showSideBarAsPerRole = () => {
       <div class="menu-inner-shadow"></div>
       <ul class="menu-inner py-1">
         <li class="menu-item">
-          <a href="/./visitiors.php" class="menu-link">
+          <a href="/visitiors.php" class="menu-link">
             <i class="menu-icon tf-icons fas fa-users" style="color: #27547c;"></i>
             <div data-i18n="Layouts">View All Visitors</div>
           </a>

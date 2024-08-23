@@ -20,15 +20,19 @@ const institute = {
     });
   },
   listByType: function (instituteType) {
-  return new Promise(function (resolve, reject) {
-    let data = FetchApi("", `institute/typewiselisting/${instituteType}`, "GET");
-    if (data) {
-      resolve(data);
-    } else {
-      reject("Something went wrong. Please check the API");
-    }
-  });
-},
+    return new Promise(function (resolve, reject) {
+      let data = FetchApi(
+        "",
+        `institute/typewiselisting/${instituteType}`,
+        "GET"
+      );
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Something went wrong. Please check the API");
+      }
+    });
+  },
 
   get: function (id) {
     return new Promise(function (resolve, reject) {
@@ -444,27 +448,27 @@ const user = {
       }
     });
   },
-  generateToken: function (userData) {
-    userData = stringifyData(userData);
-    return new Promise(function (resolve, reject) {
-      let data = FetchApi(userData, "/user/generateToken", "POST");
-      if (data) {
-        resolve(data);
-      } else {
-        reject("Something went wrong. Please check api");
-      }
-    });
-  },
-  checkToken: function () {
-    return new Promise(function (resolve, reject) {
-      let data = FetchAuthApi("", "/user/checkToken", "GET");
-      if (data) {
-        resolve(data);
-      } else {
-        reject("Something went wrong. Please check api");
-      }
-    });
-  },
+  // generateToken: function (userData) {
+  //   userData = stringifyData(userData);
+  //   return new Promise(function (resolve, reject) {
+  //     let data = FetchApi(userData, "/user/generateToken", "POST");
+  //     if (data) {
+  //       resolve(data);
+  //     } else {
+  //       reject("Something went wrong. Please check api");
+  //     }
+  //   });
+  // },
+  // checkToken: function () {
+  //   return new Promise(function (resolve, reject) {
+  //     let data = FetchAuthApi("", "/user/checkToken", "GET");
+  //     if (data) {
+  //       resolve(data);
+  //     } else {
+  //       reject("Something went wrong. Please check api");
+  //     }
+  //   });
+  // },
 };
 const questionBankListApi = () => {
   return FetchApi("", `teacher/listAllExam`, "GET");

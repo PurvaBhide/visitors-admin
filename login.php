@@ -39,7 +39,7 @@
                 <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus />
               </div>
               <div class="mb-3">
-              <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Password</label>
                   <a href="auth-forgot-password-basic.html">
                     <small>Forgot Password?</small>
@@ -47,9 +47,9 @@
                 </div>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" autofocus />
               </div>
-          
+
               <div id="alert-div" class="mb-3 col-12 d-none"></div>
-     
+
               <div class="mb-3">
                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
               </div>
@@ -66,10 +66,10 @@
 
 
   <!-- Core JS -->
-<?php 
-include_once('./include-common-scripts.php')
- ?>
-  <script src="./assets/js/filter/login.js"></script>
+  <?php
+  include_once('./include-common-scripts.php')
+  ?>
+  <!-- <script src="./assets/js/filter/login.js"></script> -->
 
 </body>
 
