@@ -5,46 +5,44 @@ const showSideBarAsPerRole = () => {
 
   let listHtml = `
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
-      <a href="https://triuttarakhand.in" class="app-brand-link">
-        <span class="app-brand-logo demo">
-          <img src="./assets/img/portal-logo.png" alt="">
-      </a>
-      <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-        <i class="bx bx-chevron-left bx-sm align-middle"></i>
-      </a>
-    </div>
-    <div class="menu-inner-shadow"></div>
-    <ul class="menu-inner py-1">
-  
-      <li class="menu-item ">
-        <a href="/visitiors.php" class="menu-link menu-toggle">
-         <i class="menu-icon tf-icons fas fa-users" style="color: #27547c;"></i>
-          <div data-i18n="Layouts">View All Visitors</div>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons fas fa-hourglass-half" style="color: #1e90ff;"></i>
-          <div data-i18n="Layouts">Pending Requests</div>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons fas fa-check-circle" style="color: #4caf50;"></i>
-          <div data-i18n="Layouts">Approved Requests</div>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons fas fa-times-circle" style="color: #dc3545;"></i>
-          <div data-i18n="Layouts">Rejected Requests</div>
-        </a>
-      </li>
-    </ul>
-  
-  </aside>
-       `;
+      <div class="app-brand demo">
+        <a href="https://triuttarakhand.in" class="app-brand-link">
+          <span class="app-brand-logo demo">
+            <img src="./assets/img/portal-logo.png" alt="">
+          </a>
+          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+          </a>
+      </div>
+      <div class="menu-inner-shadow"></div>
+      <ul class="menu-inner py-1">
+        <li class="menu-item">
+          <a href="/./visitiors.php" class="menu-link">
+            <i class="menu-icon tf-icons fas fa-users" style="color: #27547c;"></i>
+            <div data-i18n="Layouts">View All Visitors</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/pending-request.php" class="menu-link">
+            <i class="menu-icon tf-icons fas fa-hourglass-half" style="color: #1e90ff;"></i>
+            <div data-i18n="Layouts">Pending Requests</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/approved-request.php" class="menu-link">
+            <i class="menu-icon tf-icons fas fa-check-circle" style="color: #4caf50;"></i>
+            <div data-i18n="Layouts">Approved Requests</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/rejected-request.php" class="menu-link">
+            <i class="menu-icon tf-icons fas fa-times-circle" style="color: #dc3545;"></i>
+            <div data-i18n="Layouts">Rejected Requests</div>
+          </a>
+        </li>
+      </ul>
+    </aside>
+  `;
 
   sideBar.innerHTML = listHtml;
 };
