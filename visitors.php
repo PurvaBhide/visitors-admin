@@ -63,9 +63,13 @@
                     <thead class="  ">
                       <tr>
                         <th class="text-center">Sr. No.</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Institute Type</th>
-                        <th class="text-center">Actions</th>
+                        <th class="text-center">Visitor Name</th>
+                        <th class="text-center">Organization Name</th>
+                        <th class="text-center">Department Name</th>
+                        <th class="text-center">Appoinment Date/Time</th>
+                        <th class="text-center">Purpose of Visit</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
                       </tr>
                     </thead>
                     <tbody id="listInstTable">
