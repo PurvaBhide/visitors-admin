@@ -16,26 +16,29 @@ const showSideBarAsPerRole = () => {
       </div>
       <div class="menu-inner-shadow"></div>
       <ul class="menu-inner py-1">
+       
+      <li class="menu-item">
+  <a href="./visitors.php" class="menu-link">
+    <i class="menu-icon tf-icons fas fa-users" style="color: #27547c;"></i>
+    <div data-i18n="Layouts">View All Visitors</div>
+  </a>
+</li>
+
+
         <li class="menu-item">
-          <a href="/visitiors.php" class="menu-link">
-            <i class="menu-icon tf-icons fas fa-users" style="color: #27547c;"></i>
-            <div data-i18n="Layouts">View All Visitors</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="/pending-request.php" class="menu-link">
+          <a href="./pending-request.php" class="menu-link">
             <i class="menu-icon tf-icons fas fa-hourglass-half" style="color: #1e90ff;"></i>
             <div data-i18n="Layouts">Pending Requests</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="/approved-request.php" class="menu-link">
+          <a href="./approved-request.php" class="menu-link">
             <i class="menu-icon tf-icons fas fa-check-circle" style="color: #4caf50;"></i>
             <div data-i18n="Layouts">Approved Requests</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="/rejected-request.php" class="menu-link">
+          <a href="./rejectedrequest.php" class="menu-link">
             <i class="menu-icon tf-icons fas fa-times-circle" style="color: #dc3545;"></i>
             <div data-i18n="Layouts">Rejected Requests</div>
           </a>
