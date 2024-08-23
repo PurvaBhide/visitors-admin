@@ -4,14 +4,20 @@ const setInstList=((data)=>{
     const listData=data?.map((value,index)=>{
         return ` <tr class="text-center">
         <td>${++index}</td>
-        <td>${value?.name}</td>
-        <td>${value?.institute_type}</td>
+        <td> </td>
+        <td> </td>
+          <td> </td>
+            <td> </td>
+              <td> </td>
+               <td> </td>
         <td class="text-center">
-          <a href="edit-institute.php?id=${value?.id}" class="btn btn-primary"><i class="fas fa-edit    "></i> </a>
-          <a href="javascript:void(0)" onclick=openDeleteModal(this,${value?.id}) class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> </a>
+          <a href="edit-visitors.php?id=${value?.id}" class="btn btn-primary"><i class="fas fa-edit    "></i> </a>
+         
         </td>
       </tr>`;
     })
+    // deletebutton 
+    //  <a href="javascript:void(0)" onclick=openDeleteModal(this,${value?.id}) class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> </a>
     $("#listInstTable").html(listData.join(""))
      instTable = new DataTable('#instTable');
     instTable.options={
