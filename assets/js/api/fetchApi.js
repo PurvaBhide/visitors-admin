@@ -1,7 +1,7 @@
 // const server="http://localhost:8080"
 // const server="https://kitintellect.tech/api-exam-portal/public/"
-// const server = "https://kitintellect.tech/api-exam-portal-master/public";
-const server = "https://triuttarakhand.in/api-exam-portal/public/";
+const server = "http://localhost:8080";
+// const server = "https://triuttarakhand.in/api-exam-portal/public/";
 
 const FetchApi = (data, path, method) => {
   let res;

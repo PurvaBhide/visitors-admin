@@ -18,7 +18,9 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <script src="assets/js/api/fetchApi.js"></script>
-<script src="assets/js/api/all-api.js"></script>
+<!-- <script src="assets/js/api/all-api.js"></script> -->
+<script src="assets/js/api/allApi.js"></script>
+
 <script src="assets/js/filter/demographic.js"></script>
 
 <script src="./assets/js/filter/getQueryParamValue.js"></script>
