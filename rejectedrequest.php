@@ -111,7 +111,7 @@
 
     <script src="./assets/js/filter/checkLogin.js"></script>
     <script src="./assets/js/filter/deleteInstitute.js"></script>
-    <!-- <script src="./assets/js/filter/listInstitute.js"></script> -->
+    <script src="./assets/js/filter/ListAllRejected.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script>
         // Function to convert the table data to CSV format
