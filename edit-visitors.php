@@ -79,10 +79,33 @@
                     </div>
                   </div>
                   <div class="row pt-3">
-                    <div class="col-md-6 form-group">
-                      <label for="appointmentDateTime" class="form-label">Appointment Date/Time</label>
-                      <input type="datetime-local" name="appointmentDateTime" class="form-control" id="appointmentDateTime" value="2024-08-21T10:30:00" readonly>
+                    <div class="col-md-3 form-group">
+                      <label for="appointmentDate" class="form-label">Appointment Date</label>
+                      <input type="date" name="appointmentDate" class="form-control" id="appointmentDate" required>
                     </div>
+                    <div class="col-md-3 form-group">
+                      <label for="appointmentTime" class="form-label">Meeting Start Time</label>
+                      <div class="input-group">
+                        <input type="text" name="appointmentTime" class="form-control" id="appointmentTime" placeholder="HH:MM" required>
+                        <select name="timePeriod" class="form-control" id="timePeriod" required>
+                          <option value="AM">AM</option>
+                          <option value="PM">PM</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="slotSelection" class="form-label">Select Meeting Slot</label>
+                      <select name="slotSelection" class="form-control" id="slotSelection" required>
+                        <option value="15">15 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                        <option value="45">45 Minutes</option>
+                        <option value="60">60 Minutes</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 form-group d-flex align-items-end">
+                      <button type="button" class="btn btn-primary" id="checkAvailability">Check Slot Availability</button>
+                    </div>
+
                     <div class="col-md-6 form-group">
                       <label for="purposeOfVisit" class="form-label">Purpose of Visit</label>
                       <input type="text" name="purposeOfVisit" class="form-control" id="purposeOfVisit" value="Meeting with HR" readonly>
@@ -109,7 +132,6 @@
                       </select>
                     </div>
                   </div>
-
 
                   <div class="row mt-4">
                     <div class="col-md-12 d-flex justify-content-center">
@@ -140,8 +162,32 @@
   <script src="./assets/js/filter/checkLogin.js"></script>
   <script>
     const id = getQueryParamValue("id");
+
+    document.getElementById('checkAvailability').addEventListener('click', function() {
+      let timeValue = document.getElementById('appointmentTime').value;
+      const timePeriod = document.getElementById('timePeriod').value;
+
+      if (timeValue) {
+        // Split the input time
+        let [hours, minutes] = timeValue.split(':');
+        hours = parseInt(hours);
+
+        // Convert to 24-hour format if necessary
+        if (timePeriod === 'PM' && hours < 12) {
+          hours += 12;
+        } else if (timePeriod === 'AM' && hours === 12) {
+          hours = 0;
+        }
+
+        const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
+        const slotSelection = document.getElementById('slotSelection').value;
+        const appointmentDate = document.getElementById('appointmentDate').value;
+        const checkSlotAvailabilityUrl = `http://localhost:8080/api/visitor/checkSlotAvailability?appointmentDate=${appointmentDate}&appointmentTime=${finalTime}&slotSelection=${slotSelection}`;
+
+        // Fetch logic or any other logic to handle the request
+      }
+    });
   </script>
-  <script src="./assets/js/filter/editInstitute.js"></script>
 </body>
 
 </html>
