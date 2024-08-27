@@ -33,36 +33,58 @@ const setVisitorList = (data) => {
 };
 
 
-visitors.listAllprevious()
-  .then(({status, message, data,content }) => {
-      if (!content == 0) {
-      setVisitorList(content);
-      return;
-    } else {
-    // } else if (status == 204) {
-      showAlert("success", "white", "No records found");
-      let emptyHtml = `
-        <tr class="text-center">
-        <td colspan="5">No records found</td>
-        </tr>
-        `;
-      $("#listInstTable").html(emptyHtml);
 
-      return;
-    } 
-    // else {
-    //   showAlert(
-    //     "warning",
-    //     "white",
-    //     "Something went wrong! please try again later"
-    //   );
-    // }
-  })
-  .catch(function (message) {
-    showAlert(
-      "warning",
-      "white",
-      "Something went wrong! please try again later"
-    );
-    console.error(message);
+$(document).ready(function() {
+  function fetchAndUpdateData() {
+        const startDate = $("#startdate").val();
+      const endDate = $("#enddate").val();
+
+      if (!startDate || !endDate) {
+          showAlert("warning", "white", "Please select both start and end dates.");
+          return;
+      }
+
+         const formattedStartDate = new Date(startDate).toISOString();
+      const formattedEndDate = new Date(endDate).toISOString();
+
+       visitors.listAllprevious(formattedStartDate, formattedEndDate)
+          .then(({status,content }) => {
+            if (!content == 0) {
+              console.log(content,"prevouyytttsds")
+                setVisitorList(content);
+            } else {
+                showAlert("success", "white", "No records found");
+                let emptyHtml = `
+                    <tr class="text-center">
+                        <td colspan="6">No records found</td>
+                    </tr>
+                `;
+                $("#listInstTable").html(emptyHtml);
+            }
+            // if (status === 200 && content.length > 0) {
+            //     console.log(content,"prevouyytttsds")
+            //       setVisitorList(content);
+            //   } else {
+            //       showAlert("success", "white", "No records found");
+            //       let emptyHtml = `
+            //           <tr class="text-center">
+            //               <td colspan="6">No records found</td>
+            //           </tr>
+            //       `;
+            //       $("#listInstTable").html(emptyHtml);
+            //   }
+          })
+          .catch(function (message) {
+              showAlert(
+                  "warning",
+                  "white",
+                  "Something went wrong! Please try again later."
+              );
+              console.error(message);
+          });
+  }
+
+  $("#startdate, #enddate").on("change", function() {
+      fetchAndUpdateData();
   });
+});

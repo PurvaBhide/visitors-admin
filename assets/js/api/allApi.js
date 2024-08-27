@@ -41,7 +41,7 @@ const visitors = {
   // listAll Approved request
   listAllApproved: function () {
     return new Promise(function (resolve, reject) {
-      let data = FetchApi("", "/getallvisitors", "GET");
+      let data = FetchApi("", "/approved", "GET");
       if (data) {
         resolve(data);
       } else {
@@ -53,7 +53,7 @@ const visitors = {
   // listAll Rejected request
   listAllRejected: function () {
     return new Promise(function (resolve, reject) {
-      let data = FetchApi("", "/getallvisitors", "GET");
+      let data = FetchApi("", "/rejected", "GET");
       if (data) {
         resolve(data);
       } else {
@@ -63,14 +63,23 @@ const visitors = {
   },
 
   // listAll Previous request
-  listAllprevious: function () {
+  listAllprevious: function (fromDate, toDate, page = 0, size = 10) {
     return new Promise(function (resolve, reject) {
-      let data = FetchApi("", "/getallvisitors", "GET");
-      if (data) {
-        resolve(data);
-      } else {
-        reject("Something went wrong. Please check api");
-      }
+      FetchApi3(
+        "",
+        `/past?from=${fromDate}&to=${toDate}&page=${page}&size=${size}`,
+        "GET"
+      )
+        .then((data) => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject("No data found.");
+          }
+        })
+        .catch((error) => {
+          reject("Something went wrong. Please check the API.");
+        });
     });
   },
 };
