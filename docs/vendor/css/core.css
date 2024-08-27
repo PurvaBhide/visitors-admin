@@ -15748,6 +15748,8 @@ html:not(.layout-footer-fixed) .content-wrapper {
   width: 2.375rem;
   height: 2.375rem;
   cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 .avatar img {
   width: 100%;
