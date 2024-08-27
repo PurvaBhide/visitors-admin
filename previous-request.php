@@ -9,7 +9,7 @@
 
     <meta name="description" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <?php include_once("./include-common-style.php") ?>
+    <?php include_once "./include-common-style.php"?>
     <link rel="stylesheet" href="./libs/datatable/dataTables.bootstrap5.min.css">
 </head>
 
@@ -19,14 +19,14 @@
         <div class="layout-container">
             <!-- Menu -->
             <?php
-            include_once("./include-sidebar.php");
-            ?>
+include_once "./include-sidebar.php";
+?>
 
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page">
-                <?php include_once("./include-top-nav.php") ?>
+                <?php include_once "./include-top-nav.php"?>
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
@@ -51,12 +51,22 @@
 
                             <div class="card-body">
                                 <div id="alert-div" class="mb-3 col-md-8 mx-auto d-none"></div>
-
+                                <div class="row pt-3">
+                    <div class="col-md-3 form-group">
+                      <label for="startdate" class="form-label">Start Date</label>
+                      <input type="date" name="startdate" class="form-control" id="startdate" required>
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="enddate" class="form-label">End Date</label>
+                      <input type="date" name="enddate" class="form-control" id="enddate" required>
+                    </div>
+</div>
                                 <div class="col-12 mb-2 d-flex justify-content-end">
                                     <button id="downloadCsv" class="btn btn-primary">
                                         <i class="fas fa-download"></i> Download
                                     </button>
                                 </div>
+                              
 
                                 <div class="" style="overflow-x: auto;">
                                     <table id="instTable" class="table table-bordered table-responsive">
@@ -80,12 +90,12 @@
                         </div>
                     </div>
                     <?php
-                    include_once("./include-delete-modal.php")
-                    ?>
+include_once "./include-delete-modal.php"
+?>
                     <!-- / Content -->
 
                     <!-- Footer -->
-                    <?php include_once("./include-copy-right.php") ?>
+                    <?php include_once "./include-copy-right.php"?>
                     <!-- / Footer -->
 
                     <div class="content-backdrop fade"></div>
@@ -104,7 +114,7 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <?php include_once("./include-common-scripts.php") ?>
+    <?php include_once "./include-common-scripts.php"?>
     <script src="./libs/datatable/datatables.min.js"></script>
     <script src="assets/js/parseData.js"></script>
 
@@ -129,7 +139,7 @@
             if (link.download !== undefined) {
                 var url = URL.createObjectURL(blob);
                 link.setAttribute("href", url);
-                link.setAttribute("download", "institute.csv");
+                link.setAttribute("download", "previousRequests.csv");
                 link.style.visibility = "hidden";
                 document.body.appendChild(link);
                 link.click();

@@ -125,11 +125,11 @@
     <!-- page scripts -->
     <script src="./assets/js/filter/checkLogin.js"></script>
     <script src="./assets/js/filter/list-institute-select.js"></script>
-    <script src="./assets/js/filter/myProfile.js"></script>
+    <!-- <script src="./assets/js/filter/myProfile.js"></script> -->
     <script>
         const id = getQueryParamValue("id");
         appendInstitutes()
-        myProfile()
+        // myProfile()
     </script>
     <script src="./assets/js/filter/register-students.js"></script>
     <script src="./assets/js/filter/student/tableData.js"></script>

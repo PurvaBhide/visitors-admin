@@ -3,22 +3,22 @@
 const server = "http://localhost:8080";
 // const server = "https://triuttarakhand.in/api-exam-portal/public/";
 
-const FetchApi = (data, path, method) => {
-  let res;
-  var settings = {
-    url: server + path,
-    data: data,
-    dataType: "json",
-    method: method,
-    timeout: 0,
-    async: false,
-  };
+  const FetchApi = (data, path, method) => {
+    let res;
+    var settings = {
+      url: server + path,
+      data: data,
+      dataType: "json",
+      method: method,
+      timeout: 0,
+      async: false,
+    };
 
-  $.ajax(settings).done(function (response) {
-    res = response;
-  });
-  return res;
-};
+    $.ajax(settings).done(function (response) {
+      res = response;
+    });
+    return res;
+  };
 
 const FetchApi2 = (data, path, method) => {
   let res;
@@ -39,6 +39,26 @@ const FetchApi2 = (data, path, method) => {
   });
   return res;
 };
+
+
+const FetchApi3 = (data, path, method) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: server + path,
+      data: data,
+      dataType: "json",
+      method: method,
+      timeout: 0,
+      success: function(response) {
+        resolve(response);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        reject(new Error(`AJAX request failed: ${textStatus}, ${errorThrown}`));
+      }
+    });
+  });
+};
+
 const FetchAuthApi = (data, path, method) => {
   let res;
   var settings = {

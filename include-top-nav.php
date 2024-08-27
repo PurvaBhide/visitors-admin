@@ -32,8 +32,8 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  <span class="fw-semibold d-block">John</span>
-                  <small class="text-muted">Admin</small>
+                <span class="fw-semibold d-block" style="padding: 10px;">Admin</span>
+                  <!-- <small class="text-muted">Admin</small> -->
                 </div>
               </div>
             </a>
@@ -41,17 +41,7 @@
           <li>
             <div class="dropdown-divider"></div>
           </li>
-          <li>
-            <a class="dropdown-item" href="./my-profile.php">
-              <i class="bx bx-user me-2"></i>
-              <span class="align-middle">My Profile</span>
-            </a>
-          </li>
-
-
-          <li>
-            <div class="dropdown-divider"></div>
-          </li>
+      
           <li>
             <a class="dropdown-item" id="logout" href="javascript:void(0)">
               <i class="bx bx-power-off me-2"></i>
@@ -81,13 +71,13 @@
     const userNameElements = document.querySelectorAll('.dropdown-item .fw-semibold');
     const userRoleElements = document.querySelectorAll('.dropdown-item small.text-muted');
 
-    userNameElements.forEach(element => {
-      element.textContent = user.f_name; // Assuming user data contains first name
-    });
+    // userNameElements.forEach(element => {
+    //   element.textContent = user.f_name; // Assuming user data contains first name
+    // });
 
-    userRoleElements.forEach(element => {
-      element.textContent = user.role_name; // Assuming user data contains role name
-    });
+    // userRoleElements.forEach(element => {
+    //   element.textContent = user.role_name; // Assuming user data contains role name
+    // });
   };
 
   // Call the function to update user profile on page load
