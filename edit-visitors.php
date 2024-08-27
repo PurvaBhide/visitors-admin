@@ -45,11 +45,11 @@
                   <div class="row ">
                     <div class="col-md-3 form-group">
                       <label for="visitorName" class="form-label">Visitor Name</label>
-                      <input type="text" name="fullName" class="form-control" id="visitorName" value="Madhuri Khatal" readonly>
+                      <input type="text" name="fullName" class="form-control" id="visitorName" value="Visitor Name" readonly>
                     </div>
                     <div class="col-md-3 form-group">
                       <label for="contactNumber" class="form-label">Contact Number</label>
-                      <input type="text" name="contactNumber" class="form-control" id="contactNumber" value="1234537890" readonly>
+                      <input type="number" name="contactNumber" class="form-control" id="contactNumber" value="Contact Number" readonly>
                     </div>
                     <div class="col-md-3 form-group">
                       <label for="emailAddress" class="form-label">Email Address</label>
@@ -57,25 +57,25 @@
                     </div>
                     <div class="col-md-3 form-group">
                       <label for="age" class="form-label">Age</label>
-                      <input type="text" name="age" class="form-control" id="age" value="35" readonly>
+                      <input type="number" name="age" class="form-control" id="age" value="Age" readonly>
                     </div>
                   </div>
                   <div class="row pt-3">
                     <div class="col-md-3 form-group">
                       <label for="gender" class="form-label">Gender</label>
-                      <input type="text" name="gender" class="form-control" id="gender" value="Male" readonly>
+                      <input type="text" name="gender" class="form-control" id="gender" value="Gender" readonly>
                     </div>
                     <div class="col-md-3 form-group">
                       <label for="organizationName" class="form-label">Organization Name</label>
-                      <input type="text" name="organizationName" class="form-control" id="organizationName" value="ABC Corp" readonly>
+                      <input type="text" name="organizationName" class="form-control" id="organizationName" value="Organization Name" readonly>
                     </div>
                     <div class="col-md-3 form-group">
                       <label for="designation" class="form-label">Designation</label>
-                      <input type="text" name="designation" class="form-control" id="designation" value="Manager" readonly>
+                      <input type="text" name="designation" class="form-control" id="designation" value="Designation" readonly>
                     </div>
                     <div class="col-md-3 form-group">
                       <label for="departmentName" class="form-label">Department Name</label>
-                      <input type="text" name="departmentName" class="form-control" id="departmentName" value="Human Resources" readonly>
+                      <input type="text" name="departmentName" class="form-control" id="departmentName" value="Department Name" readonly>
                     </div>
                   </div>
                   <div class="row pt-3">
@@ -108,20 +108,20 @@
 
                     <div class="col-md-6 form-group">
                       <label for="purposeOfVisit" class="form-label">Purpose of Visit</label>
-                      <input type="text" name="purposeOfVisit" class="form-control" id="purposeOfVisit" value="Meeting with HR" readonly>
+                      <input type="text" name="purposeOfVisit" class="form-control" id="purposeOfVisit" value="Purpose of Visit" readonly>
                     </div>
                   </div>
 
                   <div class="row pt-3">
                     <div class="col-md-12 form-group">
                       <label for="officialAddress" class="form-label">Official Address</label>
-                      <input type="text" name="officialAddress" class="form-control" id="officialAddress" value="123 Business Road, City, Country" readonly>
+                      <input type="text" name="officialAddress" class="form-control" id="officialAddress" value="Address" readonly>
                     </div>
                   </div>
                   <div class="row pt-3">
                     <div class="col-md-6 form-group">
                       <label for="grievanceDetails" class="form-label">Grievance Details</label>
-                      <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="No grievances" readonly>
+                      <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
                     </div>
                     <div class="col-md-6 form-group">
                       <label for="status" class="form-label">Status</label>
@@ -159,6 +159,7 @@
   <!-- build:js assets/vendor/js/core.js -->
   <?php include_once("./include-common-scripts.php") ?>
   <script src="assets/js/parseData.js"></script>
+  <script src="assets/js/filter/editVisitor.js"></script>
   <script src="./assets/js/filter/checkLogin.js"></script>
   <script>
     const id = getQueryParamValue("id");
