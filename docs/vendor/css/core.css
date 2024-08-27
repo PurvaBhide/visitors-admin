@@ -15228,6 +15228,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 .layout-navbar,
 .content-footer {
   flex: 0 0 auto;
+ 
 }
 
 .layout-page {
@@ -15279,12 +15280,18 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   flex-wrap: nowrap;
   color: #697a8d;
   z-index: 2;
+  
 }
 .layout-navbar .navbar {
   transform: translate3d(0, 0, 0);
+  
 }
 .layout-navbar .navbar-nav-right {
   flex-basis: 100%;
+  background: linear-gradient(to right, #e3461545, #ffffff36, #39dd1b4a);
+  /* background: linear-gradient(to right, #99CD61,  #71D1BB, #D488B8); */
+border-radius: 15px;
+ 
 }
 .layout-navbar .navbar-search-wrapper .search-input,
 .layout-navbar .navbar-search-wrapper .input-group-text {

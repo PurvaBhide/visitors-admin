@@ -646,6 +646,7 @@ a:hover {
   -webkit-backdrop-filter: saturate(200%) blur(10px);
           backdrop-filter: saturate(200%) blur(10px);
   background: rgba(245, 245, 249, 0.6);
+  
 }
 
 .bg-menu-theme {
