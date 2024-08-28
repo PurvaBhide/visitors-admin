@@ -12,6 +12,7 @@ const server = "http://localhost:8080";
       method: method,
       timeout: 0,
       async: false,
+      
     };
 
     $.ajax(settings).done(function (response) {
@@ -58,6 +59,28 @@ const FetchApi3 = (data, path, method) => {
     });
   });
 };
+
+const FetchApiUpdate = (data, path, method) => {
+  return new Promise((resolve, reject) => {
+    var settings = {
+      url: server + path,
+      data: JSON.stringify(data),  // Convert data to JSON string
+      dataType: "json",
+      contentType: "application/json",  // Set the correct content type
+      method: method,
+      timeout: 0,
+      success: function (response) {
+        resolve(response);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        reject(new Error(`Request failed: ${textStatus}, ${errorThrown}`));
+      },
+    };
+
+    $.ajax(settings);
+  });
+};
+
 
 const FetchAuthApi = (data, path, method) => {
   let res;
