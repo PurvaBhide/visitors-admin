@@ -82,4 +82,19 @@ const visitors = {
         });
     });
   },
+
+  // update visitor info
+  UpdateData: function (id, json) {
+    json = stringifyData(json);
+    let data = FetchApiUpdate(json, "/updatevisitor/" + id, "POST");
+    return new Promise(function (resolve, reject) {
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Something went wrong. Please check api");
+      }
+    });
+  },
+
+
 };

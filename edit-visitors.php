@@ -36,7 +36,7 @@
             </div>
             <div class="card">
               <!-- content goes here -->
-              <form id="visitorForm" action="">
+              <form id="visitorForm" action="javascript:editVisitor();">
                 <div class="card-header">
                   <h3 class="card-title">Update Visitor</h3>
                 </div>
@@ -162,6 +162,7 @@
   <script src="assets/js/filter/editVisitor.js"></script>
   <script src="./assets/js/filter/checkLogin.js"></script>
   <script>
+    editVisitor();
     const id = getQueryParamValue("id");
 
     document.getElementById('checkAvailability').addEventListener('click', function() {
