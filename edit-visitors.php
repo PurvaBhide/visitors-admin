@@ -162,7 +162,14 @@
   <script src="assets/js/filter/editVisitor.js"></script>
   <script src="./assets/js/filter/checkLogin.js"></script>
   <script>
+    document.getElementById('submit').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
     editVisitor();
+});
+
+  </script>
+  <script>
+    // editVisitor();
     const id = getQueryParamValue("id");
 
     document.getElementById('checkAvailability').addEventListener('click', function() {
@@ -189,6 +196,8 @@
         // Fetch logic or any other logic to handle the request
       }
     });
+
+
   </script>
 </body>
 

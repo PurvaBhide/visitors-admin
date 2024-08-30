@@ -15,6 +15,8 @@ const visitors = {
     });
   },
 
+
+
   // visitor show by id
   ShowByID: function (id) {
     return new Promise(function (resolve, reject) {
@@ -86,7 +88,7 @@ const visitors = {
   // update visitor info
   UpdateData: function (id, json) {
     json = stringifyData(json);
-    let data = FetchApiUpdate(json, "/updatevisitor/" + id, "POST");
+    let data = FetchApiUpdate( json, `/updatevisitor/${id}`,"POST");
     return new Promise(function (resolve, reject) {
       if (data) {
         resolve(data);
