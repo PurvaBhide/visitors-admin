@@ -75,11 +75,8 @@ const editVisitor = async () => {
 
     const id = getQueryParamValue("id");
     try {
-        console.log(visitorData, "visitorData");
-
         const response = await visitors.UpdateData(id, visitorData);
-        console.log(response, "response");
-        if (response) {
+            if (response) {
             showAlert("success", "white", "Record updated successfully");
             setTimeout(() => {
                 // Redirect or perform any other actions after a successful update

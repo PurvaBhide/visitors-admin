@@ -1,16 +1,14 @@
 let instTable;
 const setVisitorList = (data) => {
-  console.log("From List Visitor",data);
-
   const listData = data?.map((value, index) => {
-    const appointmentDateTime = value?.appointmentDateTime ? value?.appointmentDateTime : "Time not Allocated yet";
+    const appointmentDateTime = value?.appointmentstartDateTime ? value?.appointmentstartDateTime : "Time not Allocated yet";
 
     return ` <tr class="text-center">
         <td>${++index}</td>
         <td>${value?.fullName} </td>
         <td>${value?.organizationName} </td>
           <td>${value?.departmentName} </td>
-          <td>${appointmentDateTime}</td>
+         <td>${appointmentDateTime.split('T')[0]?appointmentDateTime.split('T')[0]:"Time not allocated yet"}</td>
             <td>${value?.purposeOfVisit} </td>
              
         </td>
@@ -48,10 +46,9 @@ $(document).ready(function() {
       const formattedEndDate = new Date(endDate).toISOString();
 
        visitors.listAllprevious(formattedStartDate, formattedEndDate)
-          .then(({status,content }) => {
+          .then(({content }) => {
             if (!content == 0) {
-              console.log(content,"prevouyytttsds")
-                setVisitorList(content);
+                            setVisitorList(content);
             } else {
                 showAlert("success", "white", "No records found");
                 let emptyHtml = `
@@ -62,8 +59,7 @@ $(document).ready(function() {
                 $("#listInstTable").html(emptyHtml);
             }
             // if (status === 200 && content.length > 0) {
-            //     console.log(content,"prevouyytttsds")
-            //       setVisitorList(content);
+            //               //       setVisitorList(content);
             //   } else {
             //       showAlert("success", "white", "No records found");
             //       let emptyHtml = `

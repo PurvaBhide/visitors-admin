@@ -95,6 +95,25 @@ const visitors = {
     });
   },
   
-  
+ // Function for login
+ Login: function (contactNumber, password) {
+  return new Promise(function (resolve, reject) {
+    FetchApi3(
+      "",
+      `/auth/login?contactNumber=${contactNumber}&password=${password}`,
+      "POST"
+    )
+      .then((data) => {
+        if (data) {
+          resolve(data);
+        } else {
+          reject("No data found.");
+        }
+      })
+      .catch((error) => {
+        reject("Something went wrong. Please check the API.");
+      });
+  });
+},
 
 };

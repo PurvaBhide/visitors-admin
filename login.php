@@ -11,7 +11,7 @@
 
   <meta name="description" content="" />
 
-  <?php include_once("./include-common-style.php") ?>
+  <?php include_once "./include-common-style.php"?>
 </head>
 
 <body>
@@ -34,26 +34,24 @@
             <!-- /Logo -->
 
             <form id="loginForm" class="mb-3" method="POST">
-              <div class="mb-3">
-                <label for="email" class="form-label">Email or Username</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email or username" autofocus />
-              </div>
-              <div class="mb-3">
-                <div class="d-flex justify-content-between">
-                  <label class="form-label" for="password">Password</label>
-                  <a href="auth-forgot-password-basic.html">
-                    <small>Forgot Password?</small>
-                  </a>
-                </div>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" autofocus />
-              </div>
+  <div class="mb-3">
+    <label for="contactNumber" class="form-label">Contact Number</label>
+    <input type="number" class="form-control" id="contactNumber" name="contactNumber" placeholder="Enter your contact number" required />
+  </div>
+  <div class="mb-3">
+    <div class="d-flex justify-content-between">
+      <label class="form-label" for="password">Password</label>
+    </div>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+  </div>
 
-              <div id="alert-div" class="mb-3 col-12 d-none"></div>
+  <div id="alert-div" class="mb-3 col-12 d-none"></div>
 
-              <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-              </div>
-            </form>
+  <div class="mb-3">
+    <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+  </div>
+</form>
+
 
           </div>
         </div>
@@ -67,8 +65,8 @@
 
   <!-- Core JS -->
   <?php
-  include_once('./include-common-scripts.php')
-  ?>
+include_once './include-common-scripts.php'
+?>
   <script src="./assets/js/filter/login.js"></script>
 
 </body>

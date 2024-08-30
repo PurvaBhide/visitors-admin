@@ -109,7 +109,7 @@
   <script src="./libs/datatable/datatables.min.js"></script>
   <script src="assets/js/parseData.js"></script>
 
-  <script src="./assets/js/filter/checkLogin.js"></script>
+  <!-- <script src="./assets/js/filter/checkLogin.js"></script> -->
   <script src="./assets/js/filter/deleteInstitute.js"></script>
   <script src="./assets/js/filter/ListAllVisitors.js"></script>
   <script src="assets/js/filter/editVisitor.js"></script>

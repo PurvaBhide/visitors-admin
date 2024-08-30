@@ -68,8 +68,7 @@
                         <th class="text-center">Department Name</th>
                         <th class="text-center">Appoinment Date/Time</th>
                         <th class="text-center">Purpose of Visit</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">Action</th>
+                                               <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="listInstTable">
@@ -109,7 +108,7 @@
     <script src="./libs/datatable/datatables.min.js"></script>
     <script src="assets/js/parseData.js"></script>
 
-    <script src="./assets/js/filter/checkLogin.js"></script>
+    <!-- <script src="./assets/js/filter/checkLogin.js"></script> -->
     <script src="./assets/js/filter/deleteInstitute.js"></script>
     <script src="./assets/js/filter/ListAllPending.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>

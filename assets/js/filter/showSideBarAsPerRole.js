@@ -1,6 +1,5 @@
 const showSideBarAsPerRole = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log("user data====", user);
   const sideBar = document.querySelector("#sideBar");
 
   let listHtml = `

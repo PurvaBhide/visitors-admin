@@ -68,7 +68,7 @@
                         <th class="text-center">Department Name</th>
                         <th class="text-center">Appoinment Date/Time</th>
                         <th class="text-center">Purpose of Visit</th>
-                        <th class="text-center">Status</th>
+                     
                         <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -104,12 +104,10 @@
 
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <?php include_once("./include-common-scripts.php") ?>
+     <?php include_once("./include-common-scripts.php") ?>
     <script src="./libs/datatable/datatables.min.js"></script>
     <script src="assets/js/parseData.js"></script>
 
-    <script src="./assets/js/filter/checkLogin.js"></script>
     <script src="./assets/js/filter/deleteInstitute.js"></script>
     <script src="./assets/js/filter/ListAllRejected.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
