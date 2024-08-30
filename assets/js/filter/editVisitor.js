@@ -96,24 +96,31 @@ $(document).ready(async function () {
 const editVisitor = async () => {
     const visitorForm = document.querySelector("#visitorForm");
     const formData = new FormData(visitorForm);
-    console.log(formData,"formData");
+
+    // Log each form field's name and value
+    // for (const [key, value] of formData.entries()) {
+    //     console.log(`${key}: ${value}`);
+    // }
+
     const visitorData = Object.fromEntries(formData);
     const id = getQueryParamValue("id");
-
     try {
+        console.log(visitorData,"visitorData");
+
         const response = await visitors.UpdateData(id, visitorData);
-        if (response.status === 200) {
+        console.log(response,"response");
+        if (!response == 0) {
             showAlert("success", "white", "Record updated successfully");
             setTimeout(() => {
-                // Redirect or perform any other actions after successful update
+                // Redirect or perform any other actions after a successful update
             }, 700);
         } else {
             showAlert("warning", "white", response.message);
         }
-        // if (!response == 0) {
+        // if (response.status === 200) {
         //     showAlert("success", "white", "Record updated successfully");
         //     setTimeout(() => {
-        //         // Redirect or perform any other actions after successful update
+        //         // Redirect or perform any other actions after a successful update
         //     }, 700);
         // } else {
         //     showAlert("warning", "white", response.message);
@@ -123,6 +130,43 @@ const editVisitor = async () => {
         showAlert("error", "white", "Failed to update data.");
     }
 };
+
+// Event listener for the submit button
+document.getElementById('submit').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+    editVisitor();
+});
+
+// const editVisitor = async () => {
+//     const visitorForm = document.querySelector("#visitorForm");
+//     const formData = new FormData(visitorForm);
+//     console.log(formData,"formData");
+//     const visitorData = Object.fromEntries(formData);
+//     const id = getQueryParamValue("id");
+
+//     try {
+//         const response = await visitors.UpdateData(id, visitorData);
+//         if (response.status === 200) {
+//             showAlert("success", "white", "Record updated successfully");
+//             setTimeout(() => {
+//                 // Redirect or perform any other actions after successful update
+//             }, 700);
+//         } else {
+//             showAlert("warning", "white", response.message);
+//         }
+//         // if (!response == 0) {
+//         //     showAlert("success", "white", "Record updated successfully");
+//         //     setTimeout(() => {
+//         //         // Redirect or perform any other actions after successful update
+//         //     }, 700);
+//         // } else {
+//         //     showAlert("warning", "white", response.message);
+//         // }
+//     } catch (error) {
+//         console.error("Error updating visitor data:", error);
+//         showAlert("error", "white", "Failed to update data.");
+//     }
+// };
 
 const displayVisitors = (data) => {
     document.getElementById('visitorName').value = data.fullName;

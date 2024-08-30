@@ -1,7 +1,7 @@
-// const server="http://localhost:8080"
-// const server="https://kitintellect.tech/api-exam-portal/public/"
-const server = "http://localhost:8080";
-// const server = "https://triuttarakhand.in/api-exam-portal/public/";
+// const server = "http://localhost:8080";
+const server = "https://mumbailocal.org:8081";
+
+
 
   const FetchApi = (data, path, method) => {
     let res;
@@ -20,6 +20,7 @@ const server = "http://localhost:8080";
     });
     return res;
   };
+ 
 
 const FetchApi2 = (data, path, method) => {
   let res;
@@ -41,7 +42,7 @@ const FetchApi2 = (data, path, method) => {
   return res;
 };
 
-
+// for passing 2 or more params with url
 const FetchApi3 = (data, path, method) => {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -60,6 +61,7 @@ const FetchApi3 = (data, path, method) => {
   });
 };
 
+// for passing id and json with url for update
 const FetchApiUpdate = (data, path, method) => {
   return new Promise((resolve, reject) => {
     var settings = {
@@ -73,10 +75,10 @@ const FetchApiUpdate = (data, path, method) => {
         resolve(response);
       },
       error: function (jqXHR, textStatus, errorThrown) {
+        console.error("Request failed:", textStatus, errorThrown);
         reject(new Error(`Request failed: ${textStatus}, ${errorThrown}`));
       },
     };
-
     $.ajax(settings);
   });
 };
