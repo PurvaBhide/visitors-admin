@@ -137,7 +137,7 @@
                       <select name="status" id="status" class="form-control">
                         <option value="Pending" selected>Pending</option>
                         <option value="Approved">Approved</option>
-                        <option value="Disapproved">Disapproved</option>
+                        <option value="Rejected">Rejected</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-group">
@@ -173,7 +173,7 @@
   <?php include_once "./include-common-scripts.php"?>
   <script src="assets/js/parseData.js"></script>
   <script src="assets/js/filter/editVisitor.js"></script>
-  <script src="./assets/js/filter/checkLogin.js"></script>
+  <!-- <script src="./assets/js/filter/checkLogin.js"></script> -->
   <script>
     document.getElementById('submit').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent form submission

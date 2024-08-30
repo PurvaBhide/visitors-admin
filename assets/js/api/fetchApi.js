@@ -84,6 +84,7 @@ const FetchApiUpdate = (data, path, method) => {
 };
 
 
+
 const FetchAuthApi = (data, path, method) => {
   let res;
   var settings = {
