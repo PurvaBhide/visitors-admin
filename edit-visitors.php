@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <title>Admin Dashboard</title>
   <meta name="description" content="" />
-  <?php include_once("./include-common-style.php") ?>
+  <?php include_once "./include-common-style.php"?>
 </head>
 
 <body>
@@ -14,9 +14,9 @@
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Menu -->
-      <?php include_once("./include-sidebar.php"); ?>
+      <?php include_once "./include-sidebar.php";?>
       <div class="layout-page">
-        <?php include_once("./include-top-nav.php") ?>
+        <?php include_once "./include-top-nav.php"?>
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
@@ -77,25 +77,46 @@
                       <label for="departmentName" class="form-label">Department Name</label>
                       <input type="text" name="departmentName" class="form-control" id="departmentName" value="Department Name" readonly>
                     </div>
+
                   </div>
                   <div class="row pt-3">
-                    <div class="col-md-3 form-group">
-                      <label for="appointmentDate" class="form-label">Appointment Date</label>
-                      <input type="date" name="appointmentDate" class="form-control" id="appointmentDate" required>
+                  <div class="col-md-3 form-group">
+                      <label for="purposeOfVisit" class="form-label">Purpose of Visit</label>
+                      <input type="text" name="purposeOfVisit" class="form-control" id="purposeOfVisit" value="Purpose of Visit" readonly>
                     </div>
                     <div class="col-md-3 form-group">
-                      <label for="appointmentTime" class="form-label">Meeting Start Time</label>
+                      <label for="role" class="form-label">Role</label>
+                      <input type="text" name="role" class="form-control" id="role" value="role" readonly>
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="officialAddress" class="form-label">Official Address</label>
+                      <input type="text" name="officialAddress" class="form-control" id="officialAddress" value="Address" readonly>
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="grievanceDetails" class="form-label">Grievance Details</label>
+                      <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
+                    </div>
+</div>
+                  <div class="row pt-3">
+                    <div class="col-md-3 form-group">
+                      <label for="appointmentstartDateTime" class="form-label">Appointment Date</label>
+                      <input type="date" name="appointmentstartDateTime" class="form-control" id="appointmentstartDateTime" required>
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="appointmentendDateTime" class="form-label">Meeting Start Time</label>
                       <div class="input-group">
-                        <input type="text" name="appointmentTime" class="form-control" id="appointmentTime" placeholder="HH:MM" required>
+                        <input type="text" name="appointmentendDateTime" class="form-control" id="appointmentendDateTime" placeholder="HH:MM" required>
                         <select name="timePeriod" class="form-control" id="timePeriod" required>
                           <option value="AM">AM</option>
                           <option value="PM">PM</option>
                         </select>
                       </div>
                     </div>
+
                     <div class="col-md-3 form-group">
-                      <label for="slotSelection" class="form-label">Select Meeting Slot</label>
-                      <select name="slotSelection" class="form-control" id="slotSelection" required>
+
+                      <label for="meetingDuration" class="form-label">Select Meeting Slot</label>
+                      <select name="meetingDuration" class="form-control" id="meetingDuration" required>
                         <option value="15">15 Minutes</option>
                         <option value="30">30 Minutes</option>
                         <option value="45">45 Minutes</option>
@@ -106,30 +127,22 @@
                       <button type="button" class="btn btn-primary" id="checkAvailability">Check Slot Availability</button>
                     </div>
 
-                    <div class="col-md-6 form-group">
-                      <label for="purposeOfVisit" class="form-label">Purpose of Visit</label>
-                      <input type="text" name="purposeOfVisit" class="form-control" id="purposeOfVisit" value="Purpose of Visit" readonly>
-                    </div>
+
                   </div>
 
-                  <div class="row pt-3">
-                    <div class="col-md-12 form-group">
-                      <label for="officialAddress" class="form-label">Official Address</label>
-                      <input type="text" name="officialAddress" class="form-control" id="officialAddress" value="Address" readonly>
-                    </div>
-                  </div>
-                  <div class="row pt-3">
-                    <div class="col-md-6 form-group">
-                      <label for="grievanceDetails" class="form-label">Grievance Details</label>
-                      <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
-                    </div>
-                    <div class="col-md-6 form-group">
+                                 <div class="row pt-3">
+
+                                                     <div class="col-md-6 form-group">
                       <label for="status" class="form-label">Status</label>
                       <select name="status" id="status" class="form-control">
                         <option value="Pending" selected>Pending</option>
                         <option value="Approved">Approved</option>
                         <option value="Disapproved">Disapproved</option>
                       </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="remark" class="form-label">Remark</label>
+                      <input type="text" name="remark" class="form-control" id="remark" >
                     </div>
                   </div>
 
@@ -145,7 +158,7 @@
           </div>
           <!-- / Content -->
           <!-- Footer -->
-          <?php include_once("./include-copy-right.php") ?>
+          <?php include_once "./include-copy-right.php"?>
           <!-- / Footer -->
           <div class="content-backdrop fade"></div>
         </div>
@@ -157,7 +170,7 @@
     <div class="layout-overlay layout-menu-toggle"></div>
   </div>
   <!-- build:js assets/vendor/js/core.js -->
-  <?php include_once("./include-common-scripts.php") ?>
+  <?php include_once "./include-common-scripts.php"?>
   <script src="assets/js/parseData.js"></script>
   <script src="assets/js/filter/editVisitor.js"></script>
   <script src="./assets/js/filter/checkLogin.js"></script>
@@ -173,7 +186,7 @@
     const id = getQueryParamValue("id");
 
     document.getElementById('checkAvailability').addEventListener('click', function() {
-      let timeValue = document.getElementById('appointmentTime').value;
+      let timeValue = document.getElementById('appointmentendDateTime').value;
       const timePeriod = document.getElementById('timePeriod').value;
 
       if (timeValue) {
@@ -189,9 +202,9 @@
         }
 
         const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-        const slotSelection = document.getElementById('slotSelection').value;
+        const meetingDuration = document.getElementById('meetingDuration').value;
         const appointmentDate = document.getElementById('appointmentDate').value;
-        const checkSlotAvailabilityUrl = `http://localhost:8080/api/visitor/checkSlotAvailability?appointmentDate=${appointmentDate}&appointmentTime=${finalTime}&slotSelection=${slotSelection}`;
+        const checkSlotAvailabilityUrl = `http://localhost:8080/api/visitor/checkSlotAvailability?appointmentDate=${appointmentDate}&appointmentendDateTime=${finalTime}&meetingDuration=${meetingDuration}`;
 
         // Fetch logic or any other logic to handle the request
       }

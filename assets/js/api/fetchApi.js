@@ -1,5 +1,5 @@
-// const server = "http://localhost:8080";
-const server = "https://mumbailocal.org:8081";
+const server = "http://localhost:8081";
+// const server = "https://mumbailocal.org:8081";
 
 
 
@@ -61,10 +61,11 @@ const FetchApi3 = (data, path, method) => {
   });
 };
 
+
 // for passing id and json with url for update
 const FetchApiUpdate = (data, path, method) => {
   return new Promise((resolve, reject) => {
-    var settings = {
+    $.ajax({
       url: server + path,
       data: JSON.stringify(data),  // Convert data to JSON string
       dataType: "json",
@@ -78,8 +79,7 @@ const FetchApiUpdate = (data, path, method) => {
         console.error("Request failed:", textStatus, errorThrown);
         reject(new Error(`Request failed: ${textStatus}, ${errorThrown}`));
       },
-    };
-    $.ajax(settings);
+    });
   });
 };
 
