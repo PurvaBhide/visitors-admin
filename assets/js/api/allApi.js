@@ -116,4 +116,25 @@ const visitors = {
   });
 },
 
+// check time slot avialable or not 
+   checkTimeSlot: function (start, meetingDuration) {
+    return new Promise(function (resolve, reject) {
+      FetchApi3(
+        "",
+        `/check-availability?start=${start}&duration=${meetingDuration}`,
+        "GET"
+      )
+        .then((data) => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject("No data found.");
+          }
+        })
+        .catch((error) => {
+          reject("Something went wrong. Please check the API.");
+        });
+    });
+  },
+
 };

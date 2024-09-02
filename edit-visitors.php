@@ -185,30 +185,30 @@
     // editVisitor();
     const id = getQueryParamValue("id");
 
-    document.getElementById('checkAvailability').addEventListener('click', function() {
-      let timeValue = document.getElementById('appointmentendDateTime').value;
-      const timePeriod = document.getElementById('timePeriod').value;
+    // document.getElementById('checkAvailability').addEventListener('click', function() {
+    //   let timeValue = document.getElementById('appointmentendDateTime').value;
+    //   const timePeriod = document.getElementById('timePeriod').value;
 
-      if (timeValue) {
-        // Split the input time
-        let [hours, minutes] = timeValue.split(':');
-        hours = parseInt(hours);
+    //   if (timeValue) {
+    //     // Split the input time
+    //     let [hours, minutes] = timeValue.split(':');
+    //     hours = parseInt(hours);
 
-        // Convert to 24-hour format if necessary
-        if (timePeriod === 'PM' && hours < 12) {
-          hours += 12;
-        } else if (timePeriod === 'AM' && hours === 12) {
-          hours = 0;
-        }
+    //     // Convert to 24-hour format if necessary
+    //     if (timePeriod === 'PM' && hours < 12) {
+    //       hours += 12;
+    //     } else if (timePeriod === 'AM' && hours === 12) {
+    //       hours = 0;
+    //     }
 
-        const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-        const meetingDuration = document.getElementById('meetingDuration').value;
-        const appointmentDate = document.getElementById('appointmentDate').value;
-        const checkSlotAvailabilityUrl = `http://localhost:8080/api/visitor/checkSlotAvailability?appointmentDate=${appointmentDate}&appointmentendDateTime=${finalTime}&meetingDuration=${meetingDuration}`;
+    //     const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
+    //     const meetingDuration = document.getElementById('meetingDuration').value;
+    //     const appointmentDate = document.getElementById('appointmentDate').value;
+    //     const checkSlotAvailabilityUrl = `http://localhost:8080/api/visitor/checkSlotAvailability?appointmentDate=${appointmentDate}&appointmentendDateTime=${finalTime}&meetingDuration=${meetingDuration}`;
 
-        // Fetch logic or any other logic to handle the request
-      }
-    });
+    //     // Fetch logic or any other logic to handle the request
+    //   }
+    // });
 
 
   </script>
