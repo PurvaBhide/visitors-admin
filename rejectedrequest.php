@@ -108,7 +108,7 @@
     <script src="./libs/datatable/datatables.min.js"></script>
     <script src="assets/js/parseData.js"></script>
 
-    <script src="./assets/js/filter/deleteInstitute.js"></script>
+   
     <script src="./assets/js/filter/ListAllRejected.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script>
