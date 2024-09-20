@@ -99,6 +99,7 @@ const displayVisitors = (data) => {
     document.getElementById('officialAddress').value = data.officialAddress;
     document.getElementById('grievanceDetails').value = data.grievanceDetails;
        document.getElementById('remark').value = data.remark;
+       document.getElementById('adminRemark').value = data.adminRemark;
        document.getElementById('meetingDuration').value=data.meetingDuration;
 
      if (data.appointmentstartDateTime) {
@@ -131,6 +132,9 @@ const displayVisitors = (data) => {
     // Handle remarks if they exist
     if (data.remark) {
         document.getElementById('remark').value = data.remark;
+    }
+    if(data.adminRemark){
+        document.getElementById('adminRemark').value=data.adminRemark;
     }
 };
 

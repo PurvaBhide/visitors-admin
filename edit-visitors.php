@@ -153,8 +153,12 @@
                         <option value="Rescheduled">Rescheduled</option>
                       </select>
                     </div>
-                    <div class="col-md-6 form-group">
-                      <label for="remark" class="form-label">Remark</label>
+                    <div class="col-md-3 form-group">
+                      <label for="adminRemark" class="form-label">Admin Remark</label>
+                      <input type="text" name="adminRemark" class="form-control" id="adminRemark" >
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="remark" class="form-label">Minister Remark</label>
                       <input type="text" name="remark" class="form-control" id="remark" >
                     </div>
                   </div>
