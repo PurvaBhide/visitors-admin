@@ -78,7 +78,7 @@ include_once "./include-sidebar.php";
                                                 <th class="text-center">Department Name</th>
                                                 <th class="text-center">Appoinment Date/Time</th>
                                                 <th class="text-center">Purpose of Visit</th>
-
+                                                <th class="text-center">Meeting Status</th>
                                             </tr>
                                         </thead>
                                         <tbody id="listInstTable">

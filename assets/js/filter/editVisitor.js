@@ -65,7 +65,7 @@ const editVisitor = async () => {
 
     const appointmentstartDateTime = `${startDateToUse}T${startTimeToUse}:00`;
     visitorData.appointmentstartDateTime = appointmentstartDateTime;
-   
+//    console.log("visitorData",visitorData);
     const id = getQueryParamValue("id");
     try {
         const response = await visitors.UpdateData(id, visitorData);
