@@ -88,16 +88,20 @@
                       <label for="role" class="form-label">Role</label>
                       <input type="text" name="role" class="form-control" id="role" value="role" readonly>
                     </div>
-                    <div class="col-md-3 form-group">
+                    <div class="col-md-6 form-group">
                       <label for="officialAddress" class="form-label">Official Address</label>
                       <input type="text" name="officialAddress" class="form-control" id="officialAddress" value="Address" readonly>
                     </div>
-                    <div class="col-md-3 form-group">
+                    <!-- <div class="col-md-3 form-group">
+                      <label for="grievanceDetails" class="form-label">Grievance Details</label>
+                      <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
+                    </div> -->
+</div>
+                  <div class="row pt-3">
+                  <div class="col-md-3 form-group">
                       <label for="grievanceDetails" class="form-label">Grievance Details</label>
                       <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
                     </div>
-</div>
-                  <div class="row pt-3">
                     <div class="col-md-3 form-group">
                       <label for="appointmentstartDateTime" class="form-label">Appointment Date</label>
                       <input type="date" name="appointmentstartDateTime" class="form-control" id="appointmentstartDateTime" required>
@@ -123,25 +127,38 @@
                         <option value="60">60 Minutes</option>
                       </select>
                     </div>
-                    <div class="col-md-3 form-group d-flex align-items-end">
+                    <!-- <div class="col-md-3 form-group d-flex align-items-end">
                       <button type="button" class="btn btn-primary" id="checkAvailability">Check Slot Availability</button>
-                    </div>
+                    </div> -->
 
 
                   </div>
 
                                  <div class="row pt-3">
 
-                                                     <div class="col-md-6 form-group">
-                      <label for="status" class="form-label">Status</label>
+                                                     <div class="col-md-3 form-group">
+                      <label for="status" class="form-label">Request Status</label>
                       <select name="status" id="status" class="form-control">
                         <option value="Pending" selected>Pending</option>
                         <option value="Approved">Approved</option>
                         <option value="Rejected">Rejected</option>
                       </select>
                     </div>
-                    <div class="col-md-6 form-group">
-                      <label for="remark" class="form-label">Remark</label>
+                    <div class="col-md-3 form-group">
+                      <label for="meetingStatus" class="form-label">Meeting Status</label>
+                      <select name="meetingStatus" id="meetingStatus" class="form-control">
+                        <option value="Pending" selected>Pending</option>
+                        <option value="Done">Done</option>
+                        <option value="Unresolved">Unresolved</option>
+                        <option value="Rescheduled">Rescheduled</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="adminRemark" class="form-label">Admin Remark</label>
+                      <input type="text" name="adminRemark" class="form-control" id="adminRemark" >
+                    </div>
+                    <div class="col-md-3 form-group">
+                      <label for="remark" class="form-label">Minister Remark</label>
                       <input type="text" name="remark" class="form-control" id="remark" >
                     </div>
                   </div>

@@ -10,6 +10,7 @@ const setVisitorList = (data) => {
           <td>${value?.departmentName} </td>
          <td>${appointmentDateTime.split('T')[0]?appointmentDateTime.split('T')[0]:"Time not allocated yet"}</td>
             <td>${value?.purposeOfVisit} </td>
+            <td>${value?.meetingStatus?value?.meetingStatus:""}
              
         </td>
       </tr>`;

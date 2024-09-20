@@ -68,7 +68,8 @@
                         <th class="text-center">Department Name</th>
                         <th class="text-center">Appoinment Date/Time</th>
                         <th class="text-center">Purpose of Visit</th>
-                     
+                        <th class="text-center">Request Status</th>
+                        <th class="text-center">Meeting Status</th>
                         <th class="text-center">Action</th>
                                             </tr>
                                         </thead>

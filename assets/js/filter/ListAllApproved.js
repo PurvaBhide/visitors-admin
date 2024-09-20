@@ -10,7 +10,8 @@ const setVisitorList = (data) => {
           <td>${value?.departmentName} </td>
          <td>${appointmentDateTime.split('T')[0]?appointmentDateTime.split('T')[0]:"Time not allocated yet"}</td>
             <td>${value?.purposeOfVisit} </td>
-            
+            <td>${value?.status?value?.status:""}</td>
+            <td>${value?.meetingStatus?value?.meetingStatus:""}</td>
              <td>
           <a href="edit-visitors.php?id=${value?.id}" class="btn btn-primary">
             <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> 
