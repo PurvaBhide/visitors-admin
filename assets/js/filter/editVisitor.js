@@ -101,6 +101,8 @@ const displayVisitors = (data) => {
        document.getElementById('remark').value = data.remark;
        document.getElementById('adminRemark').value = data.adminRemark;
        document.getElementById('meetingDuration').value=data.meetingDuration;
+       document.getElementById('querySolvingDepartment').value=data.querySolvingDepartment;
+       document.getElementById('querysolvingdepartmentName').value = data.querysolvingdepartmentName;
 
      if (data.appointmentstartDateTime) {
         const appointmentStart = new Date(data.appointmentstartDateTime);
@@ -136,41 +138,103 @@ const displayVisitors = (data) => {
     if(data.adminRemark){
         document.getElementById('adminRemark').value=data.adminRemark;
     }
+    if(data.querySolvingDepartment){
+        document.getElementById('querySolvingDepartment').value=data.querySolvingDepartment;
+    }
+    if(data.querysolvingdepartmentName){
+        document.getElementById('querysolvingdepartmentName').value=data.querysolvingdepartmentName;
+    }
 };
 
 
 
-document.getElementById('checkAvailability').addEventListener('click', async function () {
-    let timeValue = document.getElementById('appointmentendDateTime').value;
-    const timePeriod = document.getElementById('timePeriod').value;
+// document.getElementById('checkAvailability').addEventListener('click', async function () {
+//     let timeValue = document.getElementById('appointmentendDateTime').value;
+//     const timePeriod = document.getElementById('timePeriod').value;
 
-    if (timeValue) {
-        let [hours, minutes] = timeValue.split(':');
-        hours = parseInt(hours);
+//     if (timeValue) {
+//         let [hours, minutes] = timeValue.split(':');
+//         hours = parseInt(hours);
 
-        if (timePeriod === 'PM' && hours < 12) {
-            hours += 12;
-        } else if (timePeriod === 'AM' && hours === 12) {
-            hours = 0;
-        }
+//         if (timePeriod === 'PM' && hours < 12) {
+//             hours += 12;
+//         } else if (timePeriod === 'AM' && hours === 12) {
+//             hours = 0;
+//         }
 
-        const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-        const meetingDuration = document.getElementById('meetingDuration').value;
-        const appointmentDate = document.getElementById('appointmentstartDateTime').value || new Date().toISOString().split('T')[0];
-        const appointmentEndDateTime = `${appointmentDate}T${finalTime}:00`;
+//         const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
+//         const meetingDuration = document.getElementById('meetingDuration').value;
+//         const appointmentDate = document.getElementById('appointmentstartDateTime').value || new Date().toISOString().split('T')[0];
+//         const appointmentEndDateTime = `${appointmentDate}T${finalTime}:00`;
 
-        try {
-            const data = await visitors.checkTimeSlot(appointmentEndDateTime, meetingDuration);
+//         try {
+//             const data = await visitors.checkTimeSlot(appointmentEndDateTime, meetingDuration);
             
-            if (data?.status==200) {
-                showAlert("success", "white", "slot avialabale");
+//             if (data?.status==200) {
+//                 showAlert("success", "white", "slot avialabale");
              
-            } else {
-                showAlert("warning", "white", "slot not avialable");
-            }
+//             } else {
+//                 showAlert("warning", "white", "slot not avialable");
+//             }
          
-        } catch (error) {
-            showAlert("warning", "white", "slot not avialable");
-                   }
-    }
+//         } catch (error) {
+//             showAlert("warning", "white", "slot not avialable");
+//                    }
+//     }
+// });
+
+// document.getElementById('sendemail').addEventListener('click', function () {
+//     console.log("this is email button");
+//     // Get the selected department email
+//     var departmentEmail = document.getElementById('querySolvingDepartment').value;
+    
+//     // Get the purpose of visit text
+//     var purposeOfVisit = document.getElementById('purposeOfVisit').value;
+
+//     // Construct the email subject and body
+//     var subject = "This query is related to your department";
+//     var body = `Purpose of Visit: ${purposeOfVisit}`;
+
+//     // Trigger the email (using a `mailto` link for demonstration purposes)
+//     var mailtoLink = `mailto:${departmentEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+//     // Open the user's default mail client
+//     window.location.href = mailtoLink;
+//   });
+
+
+document.getElementById('sendemail').addEventListener('click', function () {
+    console.log("This is the email button");
+    
+    // Get the selected department email
+    var departmentEmail = document.getElementById('querySolvingDepartment').value;
+    var querysolvingdepartmentName = document.getElementById('querysolvingdepartmentName').value;
+
+    // Get the purpose of visit text
+    var purposeOfVisit = document.getElementById('purposeOfVisit').value;
+    
+    // Get the visitor's full name and email address
+    var fullName = document.getElementById('visitorName').value;
+    var emailAddress = document.getElementById('emailAddress').value;
+
+    // Prepare the data payload
+    const data = {
+        "fullName": fullName,
+        "emailAddress": emailAddress,
+        "querySolvingDepartment": departmentEmail,
+        "querysolvingdepartmentName":querysolvingdepartmentName,
+        "purposeOfVisit": purposeOfVisit,
+        "organizationName":"Tribal Department"
+    };
+
+    // Send the email using the sendEmail method
+    visitors.sendEmail(data)
+        .then((emailData) => {
+            console.log("Email sent successfully:", emailData);
+            // Display success message or perform actions after successful email
+        })
+        .catch((error) => {
+            console.error("Error sending email:", error);
+            // Display error message to the user
+        });
 });

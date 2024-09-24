@@ -94,7 +94,14 @@ const visitors = {
       return Promise.reject("Something went wrong. Please check the API.");
     });
   },
-  
+  sendEmail: function (json) {
+    return FetchApiUpdate(json, "/sendQueryEmail", "POST").then((data) => {
+   return data;
+ }).catch((error) => {
+   return Promise.reject("Something went wrong. Please check the API.");
+ });
+},
+
  // Function for login
  Login: function (contactNumber, password) {
   return new Promise(function (resolve, reject) {
