@@ -162,14 +162,52 @@
                       <input type="text" name="remark" class="form-control" id="remark" >
                     </div>
                   </div>
+                  <div class="row pt-3">
 
+                  <div class="col-md-6 form-group">
+                      <label for="querysolvingdepartmentName" class="form-label">Query Solving Departments Name</label>
+                      <select name="querysolvingdepartmentName" id="querysolvingdepartmentName" class="form-control">
+                      <option value="" selected>select</option>
+                        <option value="Department of Agriculture" >Department of Agriculture</option>
+                        <!-- <option value="sushma.04s02@gmail.com">sushma.04s02@gmail.com</optopn>
+                        <option value="purva@kitintellect.com">purva@kitintellect.com</optopn> -->
+                     
+                      </select>
+                    </div>
+                  <div class="col-md-6 form-group">
+                      <label for="querySolvingDepartment" class="form-label">Query Solving Departments Email</label>
+                      <select name="querySolvingDepartment" id="querySolvingDepartment" class="form-control">
+                      <option value="" selected>select</option>
+                        <option value="madhuribkhatal@gmail.com" >madhuribkhatal@gmail.com</option>
+                        <!-- <option value="sushma.04s02@gmail.com">sushma.04s02@gmail.com</optopn>
+                        <option value="purva@kitintellect.com">purva@kitintellect.com</optopn> -->
+                     
+                      </select>
+                    </div>
+</div>
+                    <div class="row pt-3">
+
+<div class="col-md-6 form-group">
+<button type="button" class="btn btn-primary my-2" id="sendemail">Email</button>
+<!-- <button type="submit" class="btn btn-primary my-2" id="sendemail">email</button> -->
+</div>
+<div class="col-md-6 form-group">
+<button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
+</div>
+
+</div>
+                    <!-- <div class="row mt-4">
+                    <div class="col-md-6 ">
+                      <button type="submit" class="btn btn-primary my-2" id="sendemail">email</button>
+                    </div>
+                  </div>
                   <div class="row mt-4">
-                    <div class="col-md-12 d-flex justify-content-center">
+                    <div class="col-md-6">
                       <button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
                     </div>
                   </div>
                   <div id="alert-div" class="mb-1 mt-2 col-md-8 mx-auto d-none"></div>
-                </div>
+                </div> -->
               </form>
             </div>
           </div>
