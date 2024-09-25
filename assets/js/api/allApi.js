@@ -144,4 +144,54 @@ const visitors = {
     });
   },
 
+  // Departments
+  listallDepartments: function () {
+    return new Promise(function (resolve, reject) {
+      let data = FetchApi("", "/listAll/departments", "GET");
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Something went wrong. Please check api");
+      }
+    });
+  },
+
+  DepartmentShowByID: function (id) {
+    return new Promise(function (resolve, reject) {
+      let data = FetchApi("", `/department/${id}`, "GET");
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Something went wrong. Please check api");
+      }
+    });
+  },
+
+  DeleteDepartment: function (id) {
+    return new Promise(function (resolve, reject) {
+      let data = FetchApi("", `/delete/department/${id}`, "DELETE");
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Something went wrong. Please check api");
+      }
+    });
+  },
+
+  UpdateDepartmentData: function (id, json) {
+    return FetchApiUpdate(json, `/update/department/${id}`, "PUT").then((data) => {
+   return data;
+ }).catch((error) => {
+   return Promise.reject("Something went wrong. Please check the API.");
+ });
+},
+
+CreateDEpartment: function (json) {
+  return FetchApi(json, "/create/department", "POST").then((data) => {
+ return data;
+}).catch((error) => {
+ return Promise.reject("Something went wrong. Please check the API.");
+});
+}
+
 };
