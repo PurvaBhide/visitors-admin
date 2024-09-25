@@ -192,3 +192,51 @@ document.getElementById("sendemail").addEventListener("click", function () {
       console.error("Error sending email:", error);
     });
 });
+
+
+
+function populateDepartmentDropdowns() {
+  listallDepartments()
+  
+  .then(function (data) {
+    const departmentNameDropdown = document.getElementById('querysolvingdepartmentName');
+  const departmentEmailDropdown = document.getElementById('querySolvingDepartment');
+
+  departmentNameDropdown.innerHTML = '<option value="" selected>Select</option>';
+  departmentEmailDropdown.innerHTML = '<option value="" selected>Select</option>';
+
+  data?.data.forEach(department => {
+    //  Create options for department names
+    const nameOption = document.createElement('option');
+    nameOption.value = department.departmentName; 
+    nameOption.textContent = department.departmentName;
+    departmentNameDropdown.appendChild(nameOption);
+
+  
+    const emailOption = document.createElement('option');
+    emailOption.value = department.departmentemail; 
+    emailOption.textContent = department.departmentemail; 
+    departmentEmailDropdown.appendChild(emailOption);
+  });
+})
+.catch(function (error) {
+  console.error("Error fetching department data:", error);
+});
+
+}
+
+// Function to fetch data from the API
+function listallDepartments() {
+  return new Promise(function (resolve, reject) {
+    let data = FetchApi("", "/listAll/departments", "GET");
+   
+    if (data) {
+      resolve(data);
+    } else {
+      reject("Something went wrong. Please check API.");
+    }
+  });
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', populateDepartmentDropdowns);

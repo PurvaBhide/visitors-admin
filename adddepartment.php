@@ -11,9 +11,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
   <meta name="description" content="" />
   <?php include_once "./include-common-style.php" ?>
   <link rel="stylesheet" href="./libs/datatable/dataTables.bootstrap5.min.css">
-  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-</head>
+  </head>
 
 <body>
   <!-- Layout wrapper -->
@@ -111,7 +109,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
       <?php include_once "./include-common-scripts.php" ?>
       <script src="assets/js/parseData.js"></script>
 
-      <script src="assets/js/filter/ListAllDepartment.js"></script>
+     
       <script src="./libs/datatable/datatables.min.js"></script>
       <!-- <script src="assets/js/filter/editDepartment.js"></script> -->
       <script src="./assets/js/filter/checkLogin.js"></script>
@@ -185,6 +183,12 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
               console.error("Error:", error);
             });
         }
-      </script>
+      </script> 
+      <script>
+        function openDeleteModal(id) {
+            console.log("Department ID:", id);
+        }
+    </script>
+    <script src="./assets/js/filter/listAllDepartment.js"></script>
 </body>
 </html>
