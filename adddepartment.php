@@ -1,3 +1,6 @@
+<?php
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="./assets/" data-template="vertical-menu-template-free">
 
@@ -11,6 +14,7 @@
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 </head>
+
 <body>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
@@ -38,12 +42,12 @@
             </div>
             <div class="card">
               <!-- content goes here -->
-              <form id="DepartmentForm" action="javascript:addDepartment();">
+              <form id="DepartmentForm" action="javascript:saveDepartment();">
                 <div class="card-header">
-                  <h3 class="card-title">Add Visitor</h3>
+                  <h3 class="card-title"><?php echo $id ? 'Edit' : 'Add'; ?> Department</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
+                  <input type="hidden" id="departmentId" value="<?php echo $id; ?>">
                   <div class="row ">
                     <div class="col-md-6 form-group">
                       <label for="departmentName" class="form-label">Department Name</label>
@@ -55,10 +59,11 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <button type="submit" class="btn btn-primary my-2" id="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary my-2" id="submit">Save</button>
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
           <div class="mt-3"></div>
@@ -116,6 +121,70 @@
       <script>
         // editVisitor();
         const id = getQueryParamValue("id");
+      </script>
+      <script>
+        // Wait for DOM to load
+        document.addEventListener("DOMContentLoaded", function() {
+          const departmentId = document.getElementById("departmentId").value;
+
+          // If department ID exists, it's an edit operation, so fetch department details
+          if (departmentId) {
+            fetchDepartmentData(departmentId);
+          }
+        });
+
+        function fetchDepartmentData(id) {
+          fetch(`http://localhost:8081/department/${id}`)
+            .then(response => response.json())
+            .then(responseData => {
+              // Access data object in the response
+              const data = responseData.data;
+              if (data) {
+                // Populate form fields with department data
+                document.getElementById("departmentName").value = data.departmentName;
+                document.getElementById("departmentemail").value = data.departmentemail;
+              } else {
+                alert("No department data found.");
+              }
+            })
+            .catch((error) => {
+              alert("An error occurred while fetching the department details.");
+              console.error("Error:", error);
+            });
+        }
+
+        function saveDepartment() {
+          const departmentId = document.getElementById("departmentId").value;
+          const departmentName = document.getElementById("departmentName").value;
+          const departmentemail = document.getElementById("departmentemail").value;
+
+          const payload = {
+            departmentName,
+            departmentemail,
+          };
+
+          const method = departmentId ? "PUT" : "POST";
+          const url = departmentId ?
+            `http://localhost:8081/update/department/${departmentId}` :
+            "http://localhost:8081/create/department";
+
+          fetch(url, {
+              method,
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              alert(`Department ${departmentId ? "updated" : "added"} successfully!`);
+              window.location.href = "adddepartment.php"; // Redirect after saving
+            })
+            .catch((error) => {
+              alert(`An error occurred while ${departmentId ? "updating" : "adding"} the department.`);
+              console.error("Error:", error);
+            });
+        }
       </script>
 </body>
 </html>
