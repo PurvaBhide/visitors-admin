@@ -1,240 +1,194 @@
 $(document).ready(async function () {
-    const id = getQueryParamValue("id"); 
-    if (id) {
-        try {
-            const data = await visitors.ShowByID(id);
-            if (data) {
-                displayVisitors(data);
-            } else {
-                showAlert("warning", "white", "No data found.");
-            }
-        } catch (error) {
-            console.error("Error fetching visitor data:", error);
-            showAlert("error", "white", "Failed to fetch data.");
-        }
+  const id = getQueryParamValue("id");
+  if (id) {
+    try {
+      const data = await visitors.ShowByID(id);
+      if (data) {
+        displayVisitors(data);
+      } else {
+        showAlert("warning", "white", "No data found.");
+      }
+    } catch (error) {
+      console.error("Error fetching visitor data:", error);
+      showAlert("error", "white", "Failed to fetch data.");
     }
+  }
 });
 
 const editVisitor = async () => {
-    const visitorForm = document.querySelector("#visitorForm");
-    const formData = new FormData(visitorForm);
-    const visitorData = Object.fromEntries(formData.entries());
+  const visitorForm = document.querySelector("#visitorForm");
+  const formData = new FormData(visitorForm);
+  const visitorData = Object.fromEntries(formData.entries());
 
-       const currentDate = new Date().toISOString().split('T')[0];
+  const currentDate = new Date().toISOString().split("T")[0];
 
-      let appointmentTime = document.getElementById('appointmentendDateTime').value;
-    const timePeriod = document.getElementById('timePeriod').value;
+  let appointmentTime = document.getElementById("appointmentendDateTime").value;
+  const timePeriod = document.getElementById("timePeriod").value;
 
-      let timeToUse = '00:00';
-    if (appointmentTime) {
-        let [hours, minutes] = appointmentTime.split(':');
-        hours = parseInt(hours);
+  let timeToUse = "00:00";
+  if (appointmentTime) {
+    let [hours, minutes] = appointmentTime.split(":");
+    hours = parseInt(hours);
 
-           if (timePeriod === 'PM' && hours < 12) {
-            hours += 12;
-        } else if (timePeriod === 'AM' && hours === 12) {
-            hours = 0;
-        }
-
-        timeToUse = `${hours.toString().padStart(2, '0')}:${minutes}`;
+    if (timePeriod === "PM" && hours < 12) {
+      hours += 12;
+    } else if (timePeriod === "AM" && hours === 12) {
+      hours = 0;
     }
 
-    const appointmentendDateTime = `${currentDate}T${timeToUse}:00`;
+    timeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
+  }
 
-     visitorData.appointmentendDateTime = appointmentendDateTime;
+  const appointmentendDateTime = `${currentDate}T${timeToUse}:00`;
 
-      const appointmentDate = document.getElementById('appointmentstartDateTime').value;
-    let startTime = document.getElementById('appointmentendDateTime').value;
-    const timePeriodStart = document.getElementById('timePeriod').value;
-    
-    const startDateToUse = appointmentDate || currentDate;
-    let startTimeToUse = '00:00';
+  visitorData.appointmentendDateTime = appointmentendDateTime;
 
-    if (startTime) {
-        let [hours, minutes] = startTime.split(':');
-        hours = parseInt(hours);
+  const appointmentDate = document.getElementById(
+    "appointmentstartDateTime"
+  ).value;
+  let startTime = document.getElementById("appointmentendDateTime").value;
+  const timePeriodStart = document.getElementById("timePeriod").value;
 
-        if (timePeriodStart === 'PM' && hours < 12) {
-            hours += 12;
-        } else if (timePeriodStart === 'AM' && hours === 12) {
-            hours = 0;
-        }
+  const startDateToUse = appointmentDate || currentDate;
+  let startTimeToUse = "00:00";
 
-        startTimeToUse = `${hours.toString().padStart(2, '0')}:${minutes}`;
+  if (startTime) {
+    let [hours, minutes] = startTime.split(":");
+    hours = parseInt(hours);
+
+    if (timePeriodStart === "PM" && hours < 12) {
+      hours += 12;
+    } else if (timePeriodStart === "AM" && hours === 12) {
+      hours = 0;
     }
 
-    const appointmentstartDateTime = `${startDateToUse}T${startTimeToUse}:00`;
-    visitorData.appointmentstartDateTime = appointmentstartDateTime;
-//    console.log("visitorData",visitorData);
-    const id = getQueryParamValue("id");
-    try {
-        const response = await visitors.UpdateData(id, visitorData);
-            if (response) {
-            showAlert("success", "white", "Record updated successfully");
-            setTimeout(() => {
-                   window.location.href = "visitors.php"
-            }, 700);
-        } else {
-            showAlert("warning", "white", response.message);
-        }
-    } catch (error) {
-        console.error("Error updating visitor data:", error);
-        showAlert("error", "white", "Failed to update data.");
-    }
+    startTimeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
+  }
 
-  
+  const appointmentstartDateTime = `${startDateToUse}T${startTimeToUse}:00`;
+  visitorData.appointmentstartDateTime = appointmentstartDateTime;
+  //    console.log("visitorData",visitorData);
+  const id = getQueryParamValue("id");
+  try {
+    const response = await visitors.UpdateData(id, visitorData);
+    if (response) {
+      showAlert("success", "white", "Record updated successfully");
+      setTimeout(() => {
+        window.location.href = "visitors.php";
+      }, 700);
+    } else {
+      showAlert("warning", "white", response.message);
+    }
+  } catch (error) {
+    console.error("Error updating visitor data:", error);
+    showAlert("error", "white", "Failed to update data.");
+  }
 };
-
 
 const displayVisitors = (data) => {
-    document.getElementById('visitorName').value = data.fullName;
-    document.getElementById('contactNumber').value = data.contactNumber;
-    document.getElementById('emailAddress').value = data.emailAddress;
-    document.getElementById('age').value = data.age;
-    document.getElementById('gender').value = data.gender;
-    document.getElementById('organizationName').value = data.organizationName;
-    document.getElementById('designation').value = data.designation;
-    document.getElementById('departmentName').value = data.departmentName;
-    document.getElementById('purposeOfVisit').value = data.purposeOfVisit;
-    document.getElementById('officialAddress').value = data.officialAddress;
-    document.getElementById('grievanceDetails').value = data.grievanceDetails;
-       document.getElementById('remark').value = data.remark;
-       document.getElementById('adminRemark').value = data.adminRemark;
-       document.getElementById('meetingDuration').value=data.meetingDuration;
-       document.getElementById('querySolvingDepartment').value=data.querySolvingDepartment;
-       document.getElementById('querysolvingdepartmentName').value = data.querysolvingdepartmentName;
+  document.getElementById("visitorName").value = data.fullName;
+  document.getElementById("contactNumber").value = data.contactNumber;
+  document.getElementById("emailAddress").value = data.emailAddress;
+  document.getElementById("age").value = data.age;
+  document.getElementById("gender").value = data.gender;
+  document.getElementById("organizationName").value = data.organizationName;
+  document.getElementById("designation").value = data.designation;
+  document.getElementById("departmentName").value = data.departmentName;
+  document.getElementById("purposeOfVisit").value = data.purposeOfVisit;
+  document.getElementById("officialAddress").value = data.officialAddress;
+  document.getElementById("grievanceDetails").value = data.grievanceDetails;
+  document.getElementById("remark").value = data.remark;
+  document.getElementById("adminRemark").value = data.adminRemark;
+  document.getElementById("meetingDuration").value = data.meetingDuration;
+  document.getElementById("querySolvingDepartment").value =
+    data.querySolvingDepartment;
+  document.getElementById("querysolvingdepartmentName").value =
+    data.querysolvingdepartmentName;
 
-     if (data.appointmentstartDateTime) {
-        const appointmentStart = new Date(data.appointmentstartDateTime);
-        document.getElementById('appointmentstartDateTime').value = appointmentStart.toISOString().split('T')[0];
+  if (data.appointmentstartDateTime) {
+    const appointmentStart = new Date(data.appointmentstartDateTime);
+    document.getElementById("appointmentstartDateTime").value = appointmentStart
+      .toISOString()
+      .split("T")[0];
 
-        const startHours = appointmentStart.getHours();
-        const startMinutes = appointmentStart.getMinutes().toString().padStart(2, '0');
-        const startTimePeriod = startHours >= 12 ? 'PM' : 'AM';
-        const startHours12 = startHours % 12 || 12;
-        document.getElementById('appointmentendDateTime').value = `${startHours12.toString().padStart(2, '0')}:${startMinutes}`;
-        document.getElementById('timePeriod').value = startTimePeriod;
-    }
+    const startHours = appointmentStart.getHours();
+    const startMinutes = appointmentStart
+      .getMinutes()
+      .toString()
+      .padStart(2, "0");
+    const startTimePeriod = startHours >= 12 ? "PM" : "AM";
+    const startHours12 = startHours % 12 || 12;
+    document.getElementById("appointmentendDateTime").value = `${startHours12
+      .toString()
+      .padStart(2, "0")}:${startMinutes}`;
+    document.getElementById("timePeriod").value = startTimePeriod;
+  }
 
-      if (data.appointmentendDateTime) {
-        const appointmentEnd = new Date(data.appointmentendDateTime);
-        const endHours = appointmentEnd.getHours();
-        const endMinutes = appointmentEnd.getMinutes().toString().padStart(2, '0');
-        const endTimePeriod = endHours >= 12 ? 'PM' : 'AM';
-        const endHours12 = endHours % 12 || 12;
-        document.getElementById('appointmentendDateTime').value = `${endHours12.toString().padStart(2, '0')}:${endMinutes}`;
-        document.getElementById('timePeriod').value = endTimePeriod;
-    }
+  if (data.appointmentendDateTime) {
+    const appointmentEnd = new Date(data.appointmentendDateTime);
+    const endHours = appointmentEnd.getHours();
+    const endMinutes = appointmentEnd.getMinutes().toString().padStart(2, "0");
+    const endTimePeriod = endHours >= 12 ? "PM" : "AM";
+    const endHours12 = endHours % 12 || 12;
+    document.getElementById("appointmentendDateTime").value = `${endHours12
+      .toString()
+      .padStart(2, "0")}:${endMinutes}`;
+    document.getElementById("timePeriod").value = endTimePeriod;
+  }
 
-    // Handle status if it exists
-    if (data.status) {
-        document.getElementById('status').value = data.status;
-    }
+  // Handle status if it exists
+  if (data.status) {
+    document.getElementById("status").value = data.status;
+  }
 
-    // Handle remarks if they exist
-    if (data.remark) {
-        document.getElementById('remark').value = data.remark;
-    }
-    if(data.adminRemark){
-        document.getElementById('adminRemark').value=data.adminRemark;
-    }
-    if(data.querySolvingDepartment){
-        document.getElementById('querySolvingDepartment').value=data.querySolvingDepartment;
-    }
-    if(data.querysolvingdepartmentName){
-        document.getElementById('querysolvingdepartmentName').value=data.querysolvingdepartmentName;
-    }
+  // Handle remarks if they exist
+  if (data.remark) {
+    document.getElementById("remark").value = data.remark;
+  }
+  if (data.adminRemark) {
+    document.getElementById("adminRemark").value = data.adminRemark;
+  }
+  if (data.querySolvingDepartment) {
+    document.getElementById("querySolvingDepartment").value =
+      data.querySolvingDepartment;
+  }
+  if (data.querysolvingdepartmentName) {
+    document.getElementById("querysolvingdepartmentName").value =
+      data.querysolvingdepartmentName;
+  }
 };
 
+document.getElementById("sendemail").addEventListener("click", function () {
+  var departmentEmail = document.getElementById("querySolvingDepartment").value;
+  var querysolvingdepartmentName = document.getElementById(
+    "querysolvingdepartmentName"
+  ).value;
 
+  var purposeOfVisit = document.getElementById("purposeOfVisit").value;
 
-// document.getElementById('checkAvailability').addEventListener('click', async function () {
-//     let timeValue = document.getElementById('appointmentendDateTime').value;
-//     const timePeriod = document.getElementById('timePeriod').value;
+  var fullName = document.getElementById("visitorName").value;
+  var emailAddress = document.getElementById("emailAddress").value;
 
-//     if (timeValue) {
-//         let [hours, minutes] = timeValue.split(':');
-//         hours = parseInt(hours);
+  const data = {
+    fullName: fullName,
+    emailAddress: emailAddress,
+    querySolvingDepartment: departmentEmail,
+    querysolvingdepartmentName: querysolvingdepartmentName,
+    purposeOfVisit: purposeOfVisit,
+    organizationName: "Tribal Department",
+  };
 
-//         if (timePeriod === 'PM' && hours < 12) {
-//             hours += 12;
-//         } else if (timePeriod === 'AM' && hours === 12) {
-//             hours = 0;
-//         }
-
-//         const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-//         const meetingDuration = document.getElementById('meetingDuration').value;
-//         const appointmentDate = document.getElementById('appointmentstartDateTime').value || new Date().toISOString().split('T')[0];
-//         const appointmentEndDateTime = `${appointmentDate}T${finalTime}:00`;
-
-//         try {
-//             const data = await visitors.checkTimeSlot(appointmentEndDateTime, meetingDuration);
-            
-//             if (data?.status==200) {
-//                 showAlert("success", "white", "slot avialabale");
-             
-//             } else {
-//                 showAlert("warning", "white", "slot not avialable");
-//             }
-         
-//         } catch (error) {
-//             showAlert("warning", "white", "slot not avialable");
-//                    }
-//     }
-// });
-
-// document.getElementById('sendemail').addEventListener('click', function () {
-//     console.log("this is email button");
-//     // Get the selected department email
-//     var departmentEmail = document.getElementById('querySolvingDepartment').value;
-    
-//     // Get the purpose of visit text
-//     var purposeOfVisit = document.getElementById('purposeOfVisit').value;
-
-//     // Construct the email subject and body
-//     var subject = "This query is related to your department";
-//     var body = `Purpose of Visit: ${purposeOfVisit}`;
-
-//     // Trigger the email (using a `mailto` link for demonstration purposes)
-//     var mailtoLink = `mailto:${departmentEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-//     // Open the user's default mail client
-//     window.location.href = mailtoLink;
-//   });
-
-
-document.getElementById('sendemail').addEventListener('click', function () {
-    console.log("This is the email button");
-    
-    // Get the selected department email
-    var departmentEmail = document.getElementById('querySolvingDepartment').value;
-    var querysolvingdepartmentName = document.getElementById('querysolvingdepartmentName').value;
-
-    // Get the purpose of visit text
-    var purposeOfVisit = document.getElementById('purposeOfVisit').value;
-    
-    // Get the visitor's full name and email address
-    var fullName = document.getElementById('visitorName').value;
-    var emailAddress = document.getElementById('emailAddress').value;
-
-    // Prepare the data payload
-    const data = {
-        "fullName": fullName,
-        "emailAddress": emailAddress,
-        "querySolvingDepartment": departmentEmail,
-        "querysolvingdepartmentName":querysolvingdepartmentName,
-        "purposeOfVisit": purposeOfVisit,
-        "organizationName":"Tribal Department"
-    };
-
-    // Send the email using the sendEmail method
-    visitors.sendEmail(data)
-        .then((emailData) => {
-            console.log("Email sent successfully:", emailData);
-            // Display success message or perform actions after successful email
-        })
-        .catch((error) => {
-            console.error("Error sending email:", error);
-            // Display error message to the user
-        });
+  visitors
+    .sendEmail(data)
+    .then((emailData) => {
+      if (emailData.data.status) {
+        alert("Email sent successfully");
+        showAlert("success", "white", emailData?.data?.message);
+      } else {
+        showAlert("warning", "white", "Error sending email");
+      }
+    })
+    .catch((error) => {
+      console.error("Error sending email:", error);
+    });
 });

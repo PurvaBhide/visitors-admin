@@ -173,6 +173,7 @@
                         <option value="purva@kitintellect.com">purva@kitintellect.com</optopn> -->
                      
                       </select>
+                      <span style="color:red">When you send email don't forgot to update</span>
                     </div>
                   <div class="col-md-6 form-group">
                       <label for="querySolvingDepartment" class="form-label">Query Solving Departments Email</label>
@@ -187,7 +188,7 @@
 </div>
                     <div class="row pt-3">
 
-<div class="col-md-6 form-group">
+<div class="col-md-6 form-group justify-contect:center">
 <button type="button" class="btn btn-primary my-2" id="sendemail">Email</button>
 <!-- <button type="submit" class="btn btn-primary my-2" id="sendemail">email</button> -->
 </div>
