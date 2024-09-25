@@ -1,6 +1,6 @@
 let instTable;
 const setDepartmentList = (data) => {
-  const listData = data?.map((value, index) => {
+   const listData = data?.map((value, index) => {
     return ` <tr class="text-center">
         <td>${++index}</td>
         <td>${value?.departmentName} </td>
@@ -10,14 +10,15 @@ const setDepartmentList = (data) => {
           Edit
             <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> 
           </a>
-          <a href="javascript:void(0)" onclick=openDeleteModal(this,${
-            value?.id
-          }) class="btn btn-danger">Delete<i class="fa fa-trash" aria-hidden="true"></i> </a>
+         <button class="btn btn-danger" onclick="openDeleteModal(${value?.id})">Delete</button>
+         
         </td>
       </tr>`;
   });
   // deletebutton
-  //
+  // <a href="javascript:void(0)" onclick=openDeleteModal(this,${
+  //   value?.id
+  // }) class="btn btn-danger">Delete<i class="fa fa-trash" aria-hidden="true"></i> </a>
   $("#listInstTable").html(listData.join(""));
   instTable = new DataTable("#instTable");
   instTable.options = {
@@ -25,7 +26,12 @@ const setDepartmentList = (data) => {
     lengthChange: false,
     autoWidth: false,
   };
+
 };
+// function openDeleteModal(id) {
+//   console.log("Department ID:", id);
+// }
+
 
 visitors
   .listallDepartments()
@@ -105,3 +111,4 @@ function refreshDepartmentList() {
       console.error(message);
     });
 }
+
