@@ -50,8 +50,8 @@ const showSideBarAsPerRole = () => {
 </li>
  <li class="menu-item">
   <a href="./adddepartment.php" class="menu-link">
-    <i class="fa-solid fa-apartment" style="color:#4caf50;"></i>
-    <div data-i18n="Layouts">Create Department</div>
+    <i class="fa-solid fa-apartment fas fa-times-circle" style="color:#4caf50;"></i>
+    <div data-i18n="Layouts">Departments</div>
   </a>
 </li>
       </ul>
