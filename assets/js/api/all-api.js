@@ -421,6 +421,12 @@ const QuestionBankApi = {
   },
 };
 
+const departmentApi = {
+  add: function (json) {
+    // Call FetchApi function with data, path, and method
+    return FetchApi(JSON.stringify(json), "/create/department", "POST");
+  },
+};
 const demographic = {
   getAllStates: function () {
     return FetchApi2("", "/states/all", "GET");
