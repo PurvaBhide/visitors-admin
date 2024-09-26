@@ -11,10 +11,12 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
   <meta name="description" content="" />
   <?php include_once "./include-common-style.php" ?>
   <link rel="stylesheet" href="./libs/datatable/dataTables.bootstrap5.min.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 </head>
+
 
 <body>
   <!-- Layout wrapper -->
@@ -111,7 +113,9 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
       <!-- build:js assets/vendor/js/core.js -->
       <?php include_once "./include-common-scripts.php" ?>
       <script src="assets/js/parseData.js"></script>
+
       <script src="./assets/js/filter/listAllDepartment.js"></script>
+
       <script src="./libs/datatable/datatables.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
       <script>
@@ -217,7 +221,13 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
               console.error("Error:", error);
             });
         }
-      </script>
+      </script> 
+      <script>
+        function openDeleteModal(id) {
+            console.log("Department ID:", id);
+        }
+    </script>
+    <script src="./assets/js/filter/listAllDepartment.js"></script>
 </body>
 
 </html>

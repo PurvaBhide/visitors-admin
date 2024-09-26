@@ -92,11 +92,7 @@
                       <label for="officialAddress" class="form-label">Official Address</label>
                       <input type="text" name="officialAddress" class="form-control" id="officialAddress" value="Address" readonly>
                     </div>
-                    <!-- <div class="col-md-3 form-group">
-                      <label for="grievanceDetails" class="form-label">Grievance Details</label>
-                      <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
-                    </div> -->
-</div>
+                   </div>
                   <div class="row pt-3">
                   <div class="col-md-3 form-group">
                       <label for="grievanceDetails" class="form-label">Grievance Details</label>
@@ -127,10 +123,7 @@
                         <option value="60">60 Minutes</option>
                       </select>
                     </div>
-                    <!-- <div class="col-md-3 form-group d-flex align-items-end">
-                      <button type="button" class="btn btn-primary" id="checkAvailability">Check Slot Availability</button>
-                    </div> -->
-
+                   
 
                   </div>
 
@@ -164,51 +157,35 @@
                   </div>
                   <div class="row pt-3">
 
-                  <div class="col-md-6 form-group">
-                      <label for="querysolvingdepartmentName" class="form-label">Query Solving Departments Name</label>
-                      <select name="querysolvingdepartmentName" id="querysolvingdepartmentName" class="form-control">
-                      <option value="" selected>select</option>
-                        <option value="Department of Agriculture" >Department of Agriculture</option>
-                        <!-- <option value="sushma.04s02@gmail.com">sushma.04s02@gmail.com</optopn>
-                        <option value="purva@kitintellect.com">purva@kitintellect.com</optopn> -->
-                     
-                      </select>
-                      <span style="color:red">When you send email don't forgot to update</span>
-                    </div>
-                  <div class="col-md-6 form-group">
-                      <label for="querySolvingDepartment" class="form-label">Query Solving Departments Email</label>
-                      <select name="querySolvingDepartment" id="querySolvingDepartment" class="form-control">
-                      <option value="" selected>select</option>
-                        <option value="madhuribkhatal@gmail.com" >madhuribkhatal@gmail.com</option>
-                        <!-- <option value="sushma.04s02@gmail.com">sushma.04s02@gmail.com</optopn>
-                        <option value="purva@kitintellect.com">purva@kitintellect.com</optopn> -->
-                     
-                      </select>
-                    </div>
+
+                    <div class="col-md-6 form-group">
+  <label for="querysolvingdepartmentName" class="form-label">Query Solving Departments Name</label>
+  <select name="querysolvingdepartmentName" id="querysolvingdepartmentName" class="form-control">
+    <option value="" selected>Select</option>
+  </select>
+  <!-- <span style="color:red">When you send an email, don't forget to update</span> -->
+</div>
+
+<div class="col-md-6 form-group">
+  <label for="querySolvingDepartment" class="form-label">Query Solving Departments Email</label>
+  <select name="querySolvingDepartment" id="querySolvingDepartment" class="form-control">
+    <option value="" selected>Select</option>
+  </select>
+</div>
+
 </div>
                     <div class="row pt-3">
 
 <div class="col-md-6 form-group justify-contect:center">
 <button type="button" class="btn btn-primary my-2" id="sendemail">Email</button>
-<!-- <button type="submit" class="btn btn-primary my-2" id="sendemail">email</button> -->
+
 </div>
 <div class="col-md-6 form-group">
 <button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
 </div>
 
 </div>
-                    <!-- <div class="row mt-4">
-                    <div class="col-md-6 ">
-                      <button type="submit" class="btn btn-primary my-2" id="sendemail">email</button>
-                    </div>
-                  </div>
-                  <div class="row mt-4">
-                    <div class="col-md-6">
-                      <button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
-                    </div>
-                  </div>
-                  <div id="alert-div" class="mb-1 mt-2 col-md-8 mx-auto d-none"></div>
-                </div> -->
+
               </form>
             </div>
           </div>
@@ -241,33 +218,10 @@
     // editVisitor();
     const id = getQueryParamValue("id");
 
-    // document.getElementById('checkAvailability').addEventListener('click', function() {
-    //   let timeValue = document.getElementById('appointmentendDateTime').value;
-    //   const timePeriod = document.getElementById('timePeriod').value;
-
-    //   if (timeValue) {
-    //     // Split the input time
-    //     let [hours, minutes] = timeValue.split(':');
-    //     hours = parseInt(hours);
-
-    //     // Convert to 24-hour format if necessary
-    //     if (timePeriod === 'PM' && hours < 12) {
-    //       hours += 12;
-    //     } else if (timePeriod === 'AM' && hours === 12) {
-    //       hours = 0;
-    //     }
-
-    //     const finalTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-    //     const meetingDuration = document.getElementById('meetingDuration').value;
-    //     const appointmentDate = document.getElementById('appointmentDate').value;
-    //     const checkSlotAvailabilityUrl = `http://localhost:8080/api/visitor/checkSlotAvailability?appointmentDate=${appointmentDate}&appointmentendDateTime=${finalTime}&meetingDuration=${meetingDuration}`;
-
-    //     // Fetch logic or any other logic to handle the request
-    //   }
-    // });
 
 
   </script>
+
 </body>
 
 </html>
