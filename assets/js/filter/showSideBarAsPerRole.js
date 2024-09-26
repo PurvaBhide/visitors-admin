@@ -48,12 +48,14 @@ const showSideBarAsPerRole = () => {
     <div data-i18n="Layouts">Previous Requests</div>
   </a>
 </li>
- <li class="menu-item">
-  <a href="./adddepartment.php" class="menu-link">
-    <i class="fa-solid fa-apartment fas fa-times-circle" style="color:#4caf50;"></i>
-    <div data-i18n="Layouts">Departments</div>
-  </a>
+<li class="menu-item">
+ <a href="./adddepartment.php" class="menu-link">
+  <i class="menu-icon tf-icons fas fa-sitemap" style="color:#e95d2a;"></i>
+  <div data-i18n="Layouts">Departments</div>
+</a>
+
 </li>
+
       </ul>
     </aside>
   `;
