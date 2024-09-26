@@ -3,9 +3,11 @@ let currentDeleteId; // To keep track of the department ID to be deleted
 
 // Function to set the department list in the table
 const setDepartmentList = (data) => {
+
   const listData = data?.map((value, index) => {
     return `
       <tr class="text-center">
+
         <td>${++index}</td>
         <td>${value?.departmentName}</td>
         <td>${value?.departmentemail}</td>
@@ -13,6 +15,7 @@ const setDepartmentList = (data) => {
           <a href="adddepartment.php?id=${value?.id}" class="btn btn-primary">
             <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
           </a>
+
           <a href="javascript:void(0)" onclick="confirmDelete('${
             value?.id
           }')" class="btn btn-danger">
@@ -23,6 +26,7 @@ const setDepartmentList = (data) => {
   });
 
   // Insert generated rows into the table
+
   $("#listInstTable").html(listData.join(""));
 
   // Initialize DataTable
@@ -32,7 +36,12 @@ const setDepartmentList = (data) => {
     lengthChange: false,
     autoWidth: false,
   };
+
 };
+// function openDeleteModal(id) {
+//   console.log("Department ID:", id);
+// }
+
 
 function confirmDelete(id) {
   const confirmation = confirm(
@@ -108,3 +117,4 @@ function refreshDepartmentList() {
       console.error(message);
     });
 }
+
