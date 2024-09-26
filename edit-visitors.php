@@ -5,8 +5,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <title>Admin Dashboard</title>
+
   <meta name="description" content="" />
   <?php include_once "./include-common-style.php"?>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -163,7 +165,7 @@
   <select name="querysolvingdepartmentName" id="querysolvingdepartmentName" class="form-control">
     <option value="" selected>Select</option>
   </select>
-  <!-- <span style="color:red">When you send an email, don't forget to update</span> -->
+  
 </div>
 
 <div class="col-md-6 form-group">
@@ -174,16 +176,19 @@
 </div>
 
 </div>
-                    <div class="row pt-3">
+              
 
 <div class="col-md-6 form-group justify-contect:center">
-<button type="button" class="btn btn-primary my-2" id="sendemail">Email</button>
+<button type="button" class="btn btn-primary my-2" id="sendemail">Send Email</button>
 
 </div>
-<div class="col-md-6 form-group">
-<button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
+<div class="col-md-12 form-group">
+  <label for="image" class="form-label col-md-12">User Uploaded document</label>
+  <img src="" id="visitorImage" alt="No Image Available" width="150"/>
 </div>
 
+<div class="col-md-12 form-group d-flex justify-content-center">
+  <button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
 </div>
 
               </form>

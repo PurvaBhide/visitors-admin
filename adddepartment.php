@@ -172,7 +172,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
         });
 
         function fetchDepartmentData(id) {
-          fetch(`http://localhost:8081/department/${id}`)
+          fetch(`https://mumbailocal.org:8081/department/${id}`)
             .then(response => response.json())
             .then(responseData => {
               const data = responseData.data;
@@ -201,8 +201,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
 
           const method = departmentId ? "PUT" : "POST";
           const url = departmentId ?
-            `http://localhost:8081/update/department/${departmentId}` :
-            "http://localhost:8081/create/department";
+            `https://mumbailocal.org:8081/update/department/${departmentId}` :
+            "https://mumbailocal.org:8081/create/department";
 
           fetch(url, {
               method,

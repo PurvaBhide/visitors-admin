@@ -54,7 +54,7 @@ function confirmDelete(id) {
 
 // Function to delete a department
 function deleteDepartment(id) {
-  fetch(`http://localhost:8081/delete/department/${id}`, {
+  fetch(`https://mumbailocal.org:8081/delete/department/${id}`, {
     method: "DELETE",
   })
     .then((response) => {
