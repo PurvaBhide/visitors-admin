@@ -10,8 +10,9 @@
   <title>Admin Dashboard</title>
 
   <meta name="description" content="" />
+  <?php include_once "./include-common-style.php" ?>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <?php include_once "./include-common-style.php"?>
 </head>
 
 <body>
@@ -34,23 +35,31 @@
             <!-- /Logo -->
 
             <form id="loginForm" class="mb-3" method="POST">
-  <div class="mb-3">
-    <label for="contactNumber" class="form-label">Contact Number</label>
-    <input type="number" class="form-control" id="contactNumber" name="contactNumber" placeholder="Enter your contact number" required />
-  </div>
-  <div class="mb-3">
-    <div class="d-flex justify-content-between">
-      <label class="form-label" for="password">Password</label>
-    </div>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
-  </div>
+              <div class="mb-3">
+                <label for="contactNumber" class="form-label">Contact Number</label>
+                <input type="number" class="form-control" id="contactNumber" name="contactNumber" placeholder="Enter your contact number" required />
+              </div>
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label" for="password">Password</label>
+                </div>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+                  <div class="input-group-append">
+                    <button type="button" id="togglePassword" class="btn btn-outline-secondary">
+                      <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                  </div>
+                </div>
 
-  <div id="alert-div" class="mb-3 col-12 d-none"></div>
+              </div>
 
-  <div class="mb-3">
-    <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-  </div>
-</form>
+              <div id="alert-div" class="mb-3 col-12 d-none"></div>
+
+              <div class="mb-3">
+                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+              </div>
+            </form>
 
 
           </div>
@@ -65,8 +74,8 @@
 
   <!-- Core JS -->
   <?php
-include_once './include-common-scripts.php'
-?>
+  include_once './include-common-scripts.php'
+  ?>
   <script src="./assets/js/filter/login.js"></script>
 
 </body>

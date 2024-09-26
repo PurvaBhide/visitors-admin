@@ -18,8 +18,8 @@
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
           <div class="avatar avatar-online">
-          <!-- <img src="./docs/img/avatars/avtar.png" alt class="w-px-40 h-auto rounded-circle" /> -->
-          <img src="./docs/img/avatars/2.png" alt class="w-px-40 h-auto rounded-circle" />
+            <!-- <img src="./docs/img/avatars/avtar.png" alt class="w-px-40 h-auto rounded-circle" /> -->
+            <img src="./docs/img/avatars/2.png" alt class="w-px-40 h-auto rounded-circle" />
           </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
@@ -32,7 +32,7 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                <span class="fw-semibold d-block" style="padding: 10px;">Admin</span>
+                  <span class="fw-semibold d-block" style="padding: 10px;">Admin</span>
                   <!-- <small class="text-muted">Admin</small> -->
                 </div>
               </div>
@@ -41,7 +41,7 @@
           <li>
             <div class="dropdown-divider"></div>
           </li>
-      
+
           <li>
             <a class="dropdown-item" id="logout" href="javascript:void(0)">
               <i class="bx bx-power-off me-2"></i>
@@ -64,7 +64,7 @@
     const userPhoto = document.querySelectorAll('.avatar img');
     userPhoto.forEach(img => {
       // img.src = user.photo;
-      img.alt = user.f_name;
+      img.alt = user?.f_name;
     });
 
     // Update username and role
