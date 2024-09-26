@@ -96,6 +96,7 @@ const displayVisitors = (data) => {
   document.getElementById("departmentName").value = data.departmentName;
   document.getElementById("purposeOfVisit").value = data.purposeOfVisit;
   document.getElementById("officialAddress").value = data.officialAddress;
+  document.getElementById("meetingStatus").value = data.meetingStatus;
   document.getElementById("grievanceDetails").value = data.grievanceDetails;
   document.getElementById("remark").value = data.remark;
   document.getElementById("adminRemark").value = data.adminRemark;
@@ -104,7 +105,7 @@ const displayVisitors = (data) => {
     data.querySolvingDepartment;
   document.getElementById("querysolvingdepartmentName").value =
     data.querysolvingdepartmentName;
-
+    document.getElementById("visitorImage").src = data.image || ""; 
   if (data.appointmentstartDateTime) {
     const appointmentStart = new Date(data.appointmentstartDateTime);
     document.getElementById("appointmentstartDateTime").value = appointmentStart
@@ -158,16 +159,19 @@ const displayVisitors = (data) => {
   }
 };
 
+
 document.getElementById("sendemail").addEventListener("click", function () {
   var departmentEmail = document.getElementById("querySolvingDepartment").value;
-  var querysolvingdepartmentName = document.getElementById(
-    "querysolvingdepartmentName"
-  ).value;
-
+  var querysolvingdepartmentName = document.getElementById("querysolvingdepartmentName").value;
   var purposeOfVisit = document.getElementById("purposeOfVisit").value;
-
   var fullName = document.getElementById("visitorName").value;
   var emailAddress = document.getElementById("emailAddress").value;
+
+  // Validation to ensure both department name and email are selected
+  if (!querysolvingdepartmentName || !departmentEmail) {
+    alert("Please select both Query Solving Department Name and Query Solving Department Email to send email");
+    return; // Exit the function if validation fails
+  }
 
   const data = {
     fullName: fullName,
@@ -181,9 +185,12 @@ document.getElementById("sendemail").addEventListener("click", function () {
   visitors
     .sendEmail(data)
     .then((emailData) => {
-      if (emailData.data.status) {
+      console.log(emailData, "emailData.data.status");
+      if (emailData.data.status == 200) {
         alert("Email sent successfully");
         showAlert("success", "white", emailData?.data?.message);
+      } else if (emailData.data.status == 400) {
+        alert("Please select Query Solving Departments Name and Query Solving Departments Email to send email");
       } else {
         showAlert("warning", "white", "Error sending email");
       }
@@ -192,8 +199,6 @@ document.getElementById("sendemail").addEventListener("click", function () {
       console.error("Error sending email:", error);
     });
 });
-
-
 
 function populateDepartmentDropdowns() {
   listallDepartments()
