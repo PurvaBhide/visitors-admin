@@ -14,8 +14,16 @@ const visitors = {
       }
     });
   },
-
-
+  deleteVisitor: function (id) {
+    return new Promise(function (resolve, reject) {
+      let data = FetchApi("", `/delete/visitor/${id}`, "DELETE");
+      if (data) {
+        resolve(data);
+      } else {
+        reject("Failed to delete the visitor. Please check the API.");
+      }
+    });
+  },
 
   // visitor show by id
   ShowByID: function (id) {
@@ -64,7 +72,6 @@ const visitors = {
     });
   },
 
-  
   // listAll Previous request
   listAllprevious: function (fromDate, toDate, page = 0, size = 10) {
     return new Promise(function (resolve, reject) {
@@ -88,43 +95,47 @@ const visitors = {
 
   // update visitor info
   UpdateData: function (id, json) {
-       return FetchApiUpdate(json, `/updatevisitor/${id}`, "POST").then((data) => {
-      return data;
-    }).catch((error) => {
-      return Promise.reject("Something went wrong. Please check the API.");
-    });
-  },
-  sendEmail: function (json) {
-    return FetchApiUpdate(json, "/sendQueryEmail", "POST").then((data) => {
-   return data;
- }).catch((error) => {
-   return Promise.reject("Something went wrong. Please check the API.");
- });
-},
-
- // Function for login
- Login: function (contactNumber, password) {
-  return new Promise(function (resolve, reject) {
-    FetchApi3(
-      "",
-      `/auth/login?contactNumber=${contactNumber}&password=${password}`,
-      "POST"
-    )
+    return FetchApiUpdate(json, `/updatevisitor/${id}`, "POST")
       .then((data) => {
-        if (data) {
-          resolve(data);
-        } else {
-          reject("No data found.");
-        }
+        return data;
       })
       .catch((error) => {
-        reject("Something went wrong. Please check the API.");
+        return Promise.reject("Something went wrong. Please check the API.");
       });
-  });
-},
+  },
+  sendEmail: function (json) {
+    return FetchApiUpdate(json, "/sendQueryEmail", "POST")
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        return Promise.reject("Something went wrong. Please check the API.");
+      });
+  },
 
-// check time slot avialable or not 
-   checkTimeSlot: function (start, meetingDuration) {
+  // Function for login
+  Login: function (contactNumber, password) {
+    return new Promise(function (resolve, reject) {
+      FetchApi3(
+        "",
+        `/auth/login?contactNumber=${contactNumber}&password=${password}`,
+        "POST"
+      )
+        .then((data) => {
+          if (data) {
+            resolve(data);
+          } else {
+            reject("No data found.");
+          }
+        })
+        .catch((error) => {
+          reject("Something went wrong. Please check the API.");
+        });
+    });
+  },
+
+  // check time slot avialable or not
+  checkTimeSlot: function (start, meetingDuration) {
     return new Promise(function (resolve, reject) {
       FetchApi3(
         "",
@@ -179,19 +190,22 @@ const visitors = {
   },
 
   UpdateDepartmentData: function (id, json) {
-    return FetchApiUpdate(json, `/update/department/${id}`, "PUT").then((data) => {
-   return data;
- }).catch((error) => {
-   return Promise.reject("Something went wrong. Please check the API.");
- });
-},
+    return FetchApiUpdate(json, `/update/department/${id}`, "PUT")
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        return Promise.reject("Something went wrong. Please check the API.");
+      });
+  },
 
-CreateDEpartment: function (json) {
-  return FetchApi(json, "/create/department", "POST").then((data) => {
- return data;
-}).catch((error) => {
- return Promise.reject("Something went wrong. Please check the API.");
-});
-}
-
+  CreateDEpartment: function (json) {
+    return FetchApi(json, "/create/department", "POST")
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        return Promise.reject("Something went wrong. Please check the API.");
+      });
+  },
 };

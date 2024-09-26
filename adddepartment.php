@@ -11,7 +11,12 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
   <meta name="description" content="" />
   <?php include_once "./include-common-style.php" ?>
   <link rel="stylesheet" href="./libs/datatable/dataTables.bootstrap5.min.css">
-  </head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+</head>
+
 
 <body>
   <!-- Layout wrapper -->
@@ -109,12 +114,48 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
       <?php include_once "./include-common-scripts.php" ?>
       <script src="assets/js/parseData.js"></script>
 
-     
+      <script src="./assets/js/filter/listAllDepartment.js"></script>
+
       <script src="./libs/datatable/datatables.min.js"></script>
-      <!-- <script src="assets/js/filter/editDepartment.js"></script> -->
-      <script src="./assets/js/filter/checkLogin.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
       <script>
-        $(document).ready(function() {});
+        function convertToCSV(data) {
+          return Papa.unparse(data, {
+            header: true,
+          });
+        }
+
+        function downloadCSV(csvData) {
+          var blob = new Blob([csvData], {
+            type: "text/csv;charset=utf-8;"
+          });
+          var link = document.createElement("a");
+          if (link.download !== undefined) {
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "department.csv");
+            link.style.visibility = "hidden";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        }
+
+        $("#downloadCsv").on("click", function() {
+          var tableData = [];
+          $("#listInstTable tr").each(function() {
+            var rowData = [];
+            $(this)
+              .find("td")
+              .each(function() {
+                rowData.push($(this).text());
+              });
+            tableData.push(rowData);
+          });
+
+          var csvData = convertToCSV(tableData);
+          downloadCSV(csvData);
+        });
       </script>
       <script>
         // editVisitor();
@@ -125,7 +166,6 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
         document.addEventListener("DOMContentLoaded", function() {
           const departmentId = document.getElementById("departmentId").value;
 
-          // If department ID exists, it's an edit operation, so fetch department details
           if (departmentId) {
             fetchDepartmentData(departmentId);
           }
@@ -135,10 +175,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
           fetch(`http://localhost:8081/department/${id}`)
             .then(response => response.json())
             .then(responseData => {
-              // Access data object in the response
               const data = responseData.data;
               if (data) {
-                // Populate form fields with department data
                 document.getElementById("departmentName").value = data.departmentName;
                 document.getElementById("departmentemail").value = data.departmentemail;
               } else {
@@ -191,4 +229,5 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
     </script>
     <script src="./assets/js/filter/listAllDepartment.js"></script>
 </body>
+
 </html>
