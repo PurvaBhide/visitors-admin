@@ -40,7 +40,7 @@
                                         <a href="./index.php">Home</a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="#">Pending Request</a>
+                                        <a href="#">Rejected Request</a>
                                     </li>
                                     <li class="breadcrumb-item active">List</li>
                                 </ol>
