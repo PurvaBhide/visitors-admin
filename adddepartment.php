@@ -37,9 +37,9 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
                     <a href="./index.php">Home</a>
                   </li>
                   <li class="breadcrumb-item">
-                    <a href="./visitors.php">Visitor</a>
+                    <a href="#">Departments</a>
                   </li>
-                  <li class="breadcrumb-item active">Update</li>
+                  <!-- <li class="breadcrumb-item active">Update</li> -->
                 </ol>
               </nav>
             </div>
