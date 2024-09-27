@@ -62,15 +62,15 @@
                                     <table id="instTable" class="table table-bordered table-responsive">
                                         <thead class="  ">
                                             <tr>
-                                            <th class="text-center">Sr. No.</th>
-                        <th class="text-center">Visitor Name</th>
-                        <th class="text-center">Organization Name</th>
-                        <th class="text-center">Department Name</th>
-                        <th class="text-center">Appoinment Date/Time</th>
-                        <th class="text-center">Purpose of Visit</th>
-                        <th class="text-center">Request Status</th>
-                        <th class="text-center">Meeting Status</th>
-                        <th class="text-center">Action</th>
+                                                <th class="text-center">Sr. No.</th>
+                                                <th class="text-center">Visitor Name</th>
+                                                <th class="text-center">Organization Name</th>
+                                                <th class="text-center">Department Name</th>
+                                                <th class="text-center">Appoinment Date/Time</th>
+                                                <th class="text-center">Purpose of Visit</th>
+                                                <th class="text-center">Request Status</th>
+                                                <th class="text-center">Meeting Status</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="listInstTable">
@@ -105,11 +105,11 @@
 
 
     <!-- Core JS -->
-     <?php include_once("./include-common-scripts.php") ?>
+    <?php include_once("./include-common-scripts.php") ?>
     <script src="./libs/datatable/datatables.min.js"></script>
     <script src="assets/js/parseData.js"></script>
 
-   
+
     <script src="./assets/js/filter/ListAllRejected.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script>
@@ -129,7 +129,7 @@
             if (link.download !== undefined) {
                 var url = URL.createObjectURL(blob);
                 link.setAttribute("href", url);
-                link.setAttribute("download", "institute.csv");
+                link.setAttribute("download", "rejectedRequest.csv");
                 link.style.visibility = "hidden";
                 document.body.appendChild(link);
                 link.click();

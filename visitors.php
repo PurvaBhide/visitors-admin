@@ -110,7 +110,7 @@
   <script src="./libs/datatable/datatables.min.js"></script>
   <script src="assets/js/parseData.js"></script>
 
-  
+
   <script src="./assets/js/filter/ListAllVisitors.js"></script>
   <script src="assets/js/filter/editVisitor.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
@@ -131,7 +131,7 @@
       if (link.download !== undefined) {
         var url = URL.createObjectURL(blob);
         link.setAttribute("href", url);
-        link.setAttribute("download", "institute.csv");
+        link.setAttribute("download", "visitors.csv");
         link.style.visibility = "hidden";
         document.body.appendChild(link);
         link.click();
