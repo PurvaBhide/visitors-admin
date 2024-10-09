@@ -54,7 +54,14 @@
     </ul>
   </div>
 </nav>
-
+<style>
+  /* Apply margin-right: 20px only for screens smaller than 768px (mobile view) */
+  @media (max-width: 768px) {
+    .dropdown-user  {
+      margin-right: 10px;
+    }
+  }
+</style>
 <script>
   const updateUserProfile = () => {
     // Retrieve user data from localStorage
