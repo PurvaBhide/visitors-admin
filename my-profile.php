@@ -133,7 +133,13 @@
     </script>
     <script src="./assets/js/filter/register-students.js"></script>
     <script src="./assets/js/filter/student/tableData.js"></script>
-
+    <script>
+        // Check if user is logged in by looking for stored session token or contactNumber in localStorage
+        if (!localStorage.getItem("contactNumber") ) {
+            // If not logged in, redirect to login.php
+            window.location.href = "login.php";
+        }
+    </script>
 </body>
 
 </html>
