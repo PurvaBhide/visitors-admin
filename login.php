@@ -26,7 +26,7 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
+              <a href="https://kitintellect.tech/visitors/" class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
                   <img src="./assets/img/portal-logo.png" alt="">
                 </span>
