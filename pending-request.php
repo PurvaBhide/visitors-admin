@@ -113,6 +113,13 @@
     <script src="./assets/js/filter/ListAllPending.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script>
+        // Check if user is logged in by looking for stored session token or contactNumber in localStorage
+        if (!localStorage.getItem("contactNumber") ) {
+            // If not logged in, redirect to login.php
+            window.location.href = "login.php";
+        }
+    </script>
+    <script>
         // Function to convert the table data to CSV format
         function convertToCSV(data) {
             return Papa.unparse(data, {
