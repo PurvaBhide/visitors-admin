@@ -100,7 +100,7 @@
                       <label for="grievanceDetails" class="form-label">Grievance Details</label>
                       <input type="text" name="grievanceDetails" class="form-control" id="grievanceDetails" value="Grievance Detail" readonly>
                     </div>
-                    <div class="col-md-3 form-group">
+                    <!-- <div class="col-md-3 form-group">
                       <label for="appointmentstartDateTime" class="form-label">Appointment Date</label>
                       <input type="date" name="appointmentstartDateTime" class="form-control" id="appointmentstartDateTime" required>
                     </div>
@@ -113,7 +113,21 @@
                           <option value="PM">PM</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
+                    <div class="col-md-3 form-group">
+  <label for="appointmentDate" class="form-label">Appointment Date</label>
+  <input type="date" name="appointmentDate" class="form-control" id="appointmentDate" required>
+</div>
+<div class="col-md-3 form-group">
+  <label for="meetingStartTime" class="form-label">Meeting Start Time</label>
+  <div class="input-group">
+    <input type="text" name="meetingStartTime" class="form-control" id="meetingStartTime" placeholder="HH:MM" required>
+    <select name="timePeriod" class="form-control" id="timePeriod" required>
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+  </div>
+</div>
 
                     <div class="col-md-3 form-group">
 
@@ -186,7 +200,10 @@
   <label for="image" class="form-label col-md-12">User Uploaded document</label>
   <img src="" id="visitorImage" alt="No Image Available" width="150"/>
 </div>
-
+<div class="col-md-3 form-group" id="passwordfield">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+      </div>
 <div class="col-md-12 form-group d-flex justify-content-center">
   <button type="submit" class="btn btn-primary my-2" id="submit">Update</button>
 </div>
@@ -222,6 +239,7 @@
   <script>
     document.getElementById('submit').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent form submission
+  
     editVisitor();
 });
 

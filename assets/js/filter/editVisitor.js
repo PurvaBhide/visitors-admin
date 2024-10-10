@@ -1,5 +1,7 @@
 $(document).ready(async function () {
   const id = getQueryParamValue("id");
+  document.getElementById("passwordfield").style.display = "none";
+
   if (id) {
     try {
       const data = await visitors.ShowByID(id);
@@ -15,21 +17,102 @@ $(document).ready(async function () {
   }
 });
 
+// const editVisitor = async () => {
+  
+//   const visitorForm = document.querySelector("#visitorForm");
+//   const formData = new FormData(visitorForm);
+//   const visitorData = Object.fromEntries(formData.entries());
+
+//   const currentDate = new Date().toISOString().split("T")[0];
+
+//   // let appointmentTime = document.getElementById("appointmentendDateTime").value;
+//   let appointmentTimeElement = document.getElementById("appointmentendDateTime");
+// let appointmentTime = appointmentTimeElement ? appointmentTimeElement.value : null;
+
+//   const timePeriod = document.getElementById("timePeriod").value;
+
+//   let timeToUse = "00:00";
+//   if (appointmentTime) {
+//     let [hours, minutes] = appointmentTime.split(":");
+//     hours = parseInt(hours);
+
+//     if (timePeriod === "PM" && hours < 12) {
+//       hours += 12;
+//     } else if (timePeriod === "AM" && hours === 12) {
+//       hours = 0;
+//     }
+
+//     timeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
+//   }
+
+//   const appointmentendDateTime = `${currentDate}T${timeToUse}:00`;
+
+//   visitorData.appointmentendDateTime = appointmentendDateTime;
+
+//   const appointmentDate = document.getElementById(
+//     "appointmentstartDateTime"
+//   ).value;
+//   let startTime = document.getElementById("appointmentendDateTime").value;
+//   const timePeriodStart = document.getElementById("timePeriod").value;
+
+//   const startDateToUse = appointmentDate || currentDate;
+//   let startTimeToUse = "00:00";
+
+//   if (startTime) {
+//     let [hours, minutes] = startTime.split(":");
+//     hours = parseInt(hours);
+
+//     if (timePeriodStart === "PM" && hours < 12) {
+//       hours += 12;
+//     } else if (timePeriodStart === "AM" && hours === 12) {
+//       hours = 0;
+//     }
+
+//     startTimeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
+//   }
+
+//   const appointmentstartDateTime = `${startDateToUse}T${startTimeToUse}:00`;
+//   visitorData.appointmentstartDateTime = appointmentstartDateTime;
+//   //    console.log("visitorData",visitorData);
+//   const id = getQueryParamValue("id");
+//   try {
+//     const response = await visitors.UpdateData(id, visitorData);
+//     if (response) {
+//       showAlert("success", "white", "Record updated successfully");
+//       alert("Record updated successfully");
+//       setTimeout(() => {
+//         window.location.href = "visitors.php";
+//       }, 700);
+//     } else {
+//       showAlert("warning", "white", response.message);
+//     }
+//   } catch (error) {
+//     console.error("Error updating visitor data:", error);
+//     showAlert("error", "white", "Failed to update data.");
+//   }
+// };
 const editVisitor = async () => {
   const visitorForm = document.querySelector("#visitorForm");
   const formData = new FormData(visitorForm);
   const visitorData = Object.fromEntries(formData.entries());
 
+  // Get the current date in YYYY-MM-DD format
   const currentDate = new Date().toISOString().split("T")[0];
 
-  let appointmentTime = document.getElementById("appointmentendDateTime").value;
-  const timePeriod = document.getElementById("timePeriod").value;
+  // Get the meeting start time and time period (AM/PM)
+  const meetingStartTimeElement = document.getElementById("meetingStartTime");
+  let meetingStartTime = meetingStartTimeElement ? meetingStartTimeElement.value : null;
 
+  const timePeriodElement = document.getElementById("timePeriod");
+  const timePeriod = timePeriodElement ? timePeriodElement.value : "AM";
+
+  // If a time is provided, convert it to 24-hour format
   let timeToUse = "00:00";
-  if (appointmentTime) {
-    let [hours, minutes] = appointmentTime.split(":");
-    hours = parseInt(hours);
+  if (meetingStartTime) {
+    let [hours, minutes] = meetingStartTime.split(":");
+    hours = parseInt(hours, 10);
 
+    // Convert to 24-hour format based on AM/PM selection
     if (timePeriod === "PM" && hours < 12) {
       hours += 12;
     } else if (timePeriod === "AM" && hours === 12) {
@@ -39,40 +122,20 @@ const editVisitor = async () => {
     timeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
   }
 
-  const appointmentendDateTime = `${currentDate}T${timeToUse}:00`;
-
-  visitorData.appointmentendDateTime = appointmentendDateTime;
-
-  const appointmentDate = document.getElementById(
-    "appointmentstartDateTime"
-  ).value;
-  let startTime = document.getElementById("appointmentendDateTime").value;
-  const timePeriodStart = document.getElementById("timePeriod").value;
-
-  const startDateToUse = appointmentDate || currentDate;
-  let startTimeToUse = "00:00";
-
-  if (startTime) {
-    let [hours, minutes] = startTime.split(":");
-    hours = parseInt(hours);
-
-    if (timePeriodStart === "PM" && hours < 12) {
-      hours += 12;
-    } else if (timePeriodStart === "AM" && hours === 12) {
-      hours = 0;
-    }
-
-    startTimeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
-  }
-
-  const appointmentstartDateTime = `${startDateToUse}T${startTimeToUse}:00`;
+  // Construct the full appointment start datetime
+  const appointmentstartDateTime = `${currentDate}T${timeToUse}:00`;
   visitorData.appointmentstartDateTime = appointmentstartDateTime;
-  //    console.log("visitorData",visitorData);
+
+  // Log the value for debugging purposes
+  console.log("appointmentstartDateTime:", appointmentstartDateTime);
+
+  // Continue with the rest of your function (submitting data, etc.)
   const id = getQueryParamValue("id");
   try {
     const response = await visitors.UpdateData(id, visitorData);
     if (response) {
       showAlert("success", "white", "Record updated successfully");
+      alert(" Record updated successfully ")
       setTimeout(() => {
         window.location.href = "visitors.php";
       }, 700);
@@ -84,6 +147,95 @@ const editVisitor = async () => {
     showAlert("error", "white", "Failed to update data.");
   }
 };
+
+// const editVisitor = async () => {
+//   // Select the form and gather form data
+//   const visitorForm = document.querySelector("#visitorForm");
+//   const formData = new FormData(visitorForm);
+//   const visitorData = Object.fromEntries(formData.entries());
+
+//   // Get the current date in YYYY-MM-DD format
+//   const currentDate = new Date().toISOString().split("T")[0];
+
+//   // Safely access the appointment end time element
+//   let appointmentTimeElement = document.getElementById("appointmentendDateTime");
+//   let appointmentTime = appointmentTimeElement ? appointmentTimeElement.value : null;
+
+//   // Safely access the time period element
+//   const timePeriodElement = document.getElementById("timePeriod");
+//   const timePeriod = timePeriodElement ? timePeriodElement.value : "AM";
+
+//   let timeToUse = "00:00";
+//   if (appointmentTime) {
+//     let [hours, minutes] = appointmentTime.split(":");
+//     hours = parseInt(hours, 10);
+
+//     // Convert 12-hour format to 24-hour format based on AM/PM
+//     if (timePeriod === "PM" && hours < 12) {
+//       hours += 12;
+//     } else if (timePeriod === "AM" && hours === 12) {
+//       hours = 0;
+//     }
+
+//     timeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
+//   }
+
+//   // Construct the full appointment end datetime
+//   const appointmentendDateTime = `${currentDate}T${timeToUse}:00`;
+//   visitorData.appointmentendDateTime = appointmentendDateTime;
+
+//   // Safely access the appointment start date and start time elements
+//   const appointmentDateElement = document.getElementById("appointmentstartDateTime");
+//   const appointmentDate = appointmentDateElement ? appointmentDateElement.value : currentDate;
+
+//   let startTimeElement = document.getElementById("appointmentendDateTime");
+//   let startTime = startTimeElement ? startTimeElement.value : null;
+
+//   const timePeriodStart = timePeriodElement ? timePeriodElement.value : "AM";
+//   let startTimeToUse = "00:00";
+
+//   if (startTime) {
+//     let [hours, minutes] = startTime.split(":");
+//     hours = parseInt(hours, 10);
+
+//     // Convert 12-hour format to 24-hour format for the start time
+//     if (timePeriodStart === "PM" && hours < 12) {
+//       hours += 12;
+//     } else if (timePeriodStart === "AM" && hours === 12) {
+//       hours = 0;
+//     }
+
+//     startTimeToUse = `${hours.toString().padStart(2, "0")}:${minutes}`;
+//   }
+
+//   // Construct the full appointment start datetime
+//   const appointmentstartDateTime = `${appointmentDate}T${startTimeToUse}:00`;
+//   visitorData.appointmentstartDateTime = appointmentstartDateTime;
+
+//   // Get the visitor ID from the query parameters
+//   const id = getQueryParamValue("id");
+
+//   try {
+//     // Send the updated visitor data to the server
+//     const response = await visitors.UpdateData(id, visitorData);
+
+//     // Handle the response
+//     if (response) {
+//       showAlert("success", "white", "Record updated successfully");
+//       alert("Record updated successfully");
+
+//       // Redirect after a short delay
+//       setTimeout(() => {
+//         window.location.href = "visitors.php";
+//       }, 700);
+//     } else {
+//       showAlert("warning", "white", response.message);
+//     }
+//   } catch (error) {
+//     console.error("Error updating visitor data:", error);
+//     showAlert("error", "white", "Failed to update data.");
+//   }
+// };
 
 const displayVisitors = (data) => {
   document.getElementById("visitorName").value = data.fullName;
@@ -101,30 +253,48 @@ const displayVisitors = (data) => {
   document.getElementById("remark").value = data.remark;
   document.getElementById("adminRemark").value = data.adminRemark;
   document.getElementById("meetingDuration").value = data.meetingDuration;
+  document.getElementById("password").value = data.password;
   document.getElementById("querySolvingDepartment").value =
     data.querySolvingDepartment;
   document.getElementById("querysolvingdepartmentName").value =
     data.querysolvingdepartmentName;
     document.getElementById("visitorImage").src = data.image || ""; 
-  if (data.appointmentstartDateTime) {
-    const appointmentStart = new Date(data.appointmentstartDateTime);
-    document.getElementById("appointmentstartDateTime").value = appointmentStart
-      .toISOString()
-      .split("T")[0];
+  // if (data.appointmentstartDateTime) {
+  //   const appointmentStart = new Date(data.appointmentstartDateTime);
+  //   document.getElementById("appointmentstartDateTime").value = appointmentStart
+  //     .toISOString()
+  //     .split("T")[0];
 
-    const startHours = appointmentStart.getHours();
+  //   const startHours = appointmentStart.getHours();
+  //   const startMinutes = appointmentStart
+  //     .getMinutes()
+  //     .toString()
+  //     .padStart(2, "0");
+  //   const startTimePeriod = startHours >= 12 ? "PM" : "AM";
+  //   const startHours12 = startHours % 12 || 12;
+  //   document.getElementById("appointmentendDateTime").value = `${startHours12
+  //     .toString()
+  //     .padStart(2, "0")}:${startMinutes}`;
+  //   document.getElementById("timePeriod").value = startTimePeriod;
+  // }
+  if (data.appointmentstartDateTime) {
+     const appointmentStart = new Date(data.appointmentstartDateTime);
+  
+       document.getElementById("appointmentDate").value = appointmentStart
+      .toISOString()
+      .split("T")[0]; 
+      let startHours = appointmentStart.getHours();
     const startMinutes = appointmentStart
       .getMinutes()
       .toString()
       .padStart(2, "0");
     const startTimePeriod = startHours >= 12 ? "PM" : "AM";
     const startHours12 = startHours % 12 || 12;
-    document.getElementById("appointmentendDateTime").value = `${startHours12
-      .toString()
-      .padStart(2, "0")}:${startMinutes}`;
+     document.getElementById("meetingStartTime").value = `${startHours12.toString().padStart(2, "0")}:${startMinutes}`;
+  
     document.getElementById("timePeriod").value = startTimePeriod;
   }
-
+  
   if (data.appointmentendDateTime) {
     const appointmentEnd = new Date(data.appointmentendDateTime);
     const endHours = appointmentEnd.getHours();
